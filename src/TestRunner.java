@@ -3,11 +3,31 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 public class TestRunner {
-   public static void main(String[] args) {
-	      Result result = JUnitCore.runClasses(Chapter1.Question1Test.class);
-	      for (Failure failure : result.getFailures()) {
-         	System.out.println(failure.toString());
-	      }
-	      System.out.println(result.wasSuccessful());
-   }
+
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+   
+	public static void main(String[] args) {
+   	runTest(Chapter1.Question1Test.class);
+		runTest(DataStructures.LinkedListNodeTest.class);
+	}
+
+	public static void runTest(Class c){
+		System.out.println(ANSI_CYAN + "Running Tests for " + c.getName() + "class."  + ANSI_RESET);
+		Result result = JUnitCore.runClasses(c);
+		if(result.wasSuccessful()){
+			System.out.println(ANSI_GREEN + "All tests were successful!" + ANSI_RESET);
+		}else{
+			for (Failure failure : result.getFailures()) {
+   			System.out.println(ANSI_RED + failure.toString() + ANSI_RESET);
+			}
+		}
+	}
 } 

@@ -19,10 +19,8 @@ ch1:datastructs src/Chapter1/*.java test/Chapter1/*.java
 main:src/Main.java $(PACKAGES)
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Main.java
 
-test.class:clean main
+test:clean $(PACKAGES) 
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/TestRunner.java
-
-test:test.class
 	$(JAVA) -cp '$(CLASSPATH)$(LIBPATH):$(CLASSPATH)bin' TestRunner
 
 clean:

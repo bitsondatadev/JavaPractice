@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import java.util.*;
 
 public class LinkedListTest{
-	
+
+	LinkedList<Integer> list;
+
 	@BeforeClass
 	public static void initialSetUp(){
 	}
@@ -16,7 +18,7 @@ public class LinkedListTest{
 	
 	@Before
 	public void setUp(){
-		
+		list = new LinkedList<Integer>();	
 	}
 
 	@After
@@ -25,8 +27,31 @@ public class LinkedListTest{
 	}
 
 	@Test
-	public void test1(){
-		System.out.println("test1");
-		assertTrue(false);
+	public void testInitialize(){
+		assertNotNull(list);
+		assertNull(list.getHead());
+		assertNull(list.getTail());
+	}
+
+	@Test
+	public void testAppendFromNull(){
+		Integer expected = new Integer(5);
+		list.appendToTail(expected);
+		assertEquals(expected,list.getHead().getData());
+		assertNull(list.getHead().getNext());
+		assertNull(list.getHead().getPrev());
+	}
+
+	@Test
+	public void testAppendAfterOneElement(){
+		Integer five = new Integer(5);
+		Integer eight = new Integer(8);
+		list.appendToTail(five);
+		list.appendToTail(eight);
+
+		assertEquals(eight, list.getHead().getNext().getData());
+		assertEquals(eight, list.getTail().getData());
+		//either getTail or get Prev is null assertEquals(five, list.getTail().getPrev().getData());
+		assertEquals(five, list.getHead().getData());
 	}
 }

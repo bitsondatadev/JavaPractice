@@ -2,27 +2,44 @@ package DataStructures;
 
 public class LinkedList<T>{
 	
-	LinkedListNode<T> head = null;
-	LinkedListNode<T> tail = null;
+	private LinkedListNode<T> head = null;
+	private LinkedListNode<T> tail = null;
 
 	public LinkedList(){}
 
 	public LinkedList(T data){
-		head = appendToTail(data);	
+		appendToTail(data);	
+	}
+
+	public LinkedListNode getHead(){
+		return this.head;
+	}
+
+	public void setHead(LinkedListNode node){
+		this.head = node;
+	}
+
+	public LinkedListNode getTail(){
+		return this.tail;
+	}
+
+	public void setTail(LinkedListNode node){
+		this.tail = node;
 	}
 
 	public LinkedListNode appendToTail(T data){
 		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
 
 		if(head==null){
-			tail = newNode;
+			setHead(newNode);
+			setTail(newNode);
 			return newNode;	
 		}
 		
-		tail.setNext(newNode);
-		tail = newNode;
+		this.tail.setNext(newNode);
+		setTail(newNode);
 
-		return head;
+		return this.head;
 	}
 
 	public LinkedListNode search(T data){

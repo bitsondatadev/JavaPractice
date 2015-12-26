@@ -17,14 +17,17 @@ public class TestRunner {
 	public static void main(String[] args) {
    	runTest(Chapter1.Question1Test.class);
 		runTest(DataStructures.LinkedListNodeTest.class);
+		runTest(DataStructures.LinkedListTest.class);
 	}
 
 	public static void runTest(Class c){
-		System.out.println(ANSI_CYAN + "Running Tests for " + c.getName() + "class."  + ANSI_RESET);
+		System.out.println(ANSI_CYAN + "Running Tests for " + c.getName() + " class."  + ANSI_RESET);
 		Result result = JUnitCore.runClasses(c);
 		if(result.wasSuccessful()){
 			System.out.println(ANSI_GREEN + "All tests were successful!" + ANSI_RESET);
 		}else{
+			System.out.println(ANSI_RED + Integer.toString(result.getFailureCount()) + " test(s) failed! " + 
+			Integer.toString(result.getRunCount()) + " test(s) run."  + ANSI_RESET);
 			for (Failure failure : result.getFailures()) {
    			System.out.println(ANSI_RED + failure.toString() + ANSI_RESET);
 			}

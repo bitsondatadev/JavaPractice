@@ -1,6 +1,7 @@
 package DataStructures;
 
 public class LinkedListNode<T>{
+
 	private LinkedListNode<T> next = null;
 	private LinkedListNode<T> prev = null;
 	private T data;

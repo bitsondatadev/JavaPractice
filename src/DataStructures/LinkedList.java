@@ -36,8 +36,25 @@ public class LinkedList<T>{
 			return newNode;	
 		}
 		
+		newNode.setPrev(this.tail);
 		this.tail.setNext(newNode);
 		setTail(newNode);
+
+		return this.head;
+	}
+	
+	public LinkedListNode appendToHead(T data){
+		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
+
+		if(head==null){
+			setHead(newNode);
+			setTail(newNode);
+			return newNode;
+		}
+
+		newNode.setNext(this.head);
+		this.head.setPrev(newNode);
+		setHead(newNode);
 
 		return this.head;
 	}
@@ -45,11 +62,20 @@ public class LinkedList<T>{
 	public LinkedListNode search(T data){
 		LinkedListNode<T> runner = head;
 
-		while(runner.getData() != data){
+		while(runner != null && runner.getData() != data){
 			runner = runner.getNext();
 		}
 
 		return runner;
+	}
+
+	public LinkedListNode remove(T data){
+		LinkedListNode<T> node = search(data);
+
+		node.getPrev().setNext(node.getNext());
+		node.getNext().setPrev(node.getPrev());
+
+		return node;
 	}
 
 }

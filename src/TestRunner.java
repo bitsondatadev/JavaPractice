@@ -15,9 +15,10 @@ public class TestRunner {
 	public static final String ANSI_WHITE = "\u001B[37m";
    
 	public static void main(String[] args) {
-   	runTest(Chapter1.Question1Test.class);
 		runTest(DataStructures.LinkedListNodeTest.class);
 		runTest(DataStructures.LinkedListTest.class);
+   	runTest(DataStructures.HashTableTest.class);
+   	runTest(Chapter1.Question1Test.class);
 	}
 
 	public static void runTest(Class c){

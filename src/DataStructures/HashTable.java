@@ -5,7 +5,7 @@ import java.util.*;
 public class HashTable<K,V>{
 
 	private final int INIT_TABLE_SIZE = 31; 
-	private List<LinkedList<HashTableEntry<K,V>>> table;
+	private List<LinkedList<AbstractMap.SimpleEntry<K,V>>> table;
 	/*The capacity is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created. The load factor is a measure of how full the hash table is allowed to get before its capacity is automatically increased. When the number of entries in the hash table exceeds the product of the load factor and the current capacity, the hash table is rehashed (that is, internal data structures are rebuilt) so that the hash table has approximately twice the number of buckets.As a general rule, the default load factor (.75) offers a good tradeoff between time and space costs. Higher values decrease the space overhead but increase the lookup cost (reflected in most of the operations of the HashMap class, including get and put).*/
 	private float loadFactor;
 	private int capacity;
@@ -23,8 +23,8 @@ public class HashTable<K,V>{
 		this.numEntries = 0;
 	}
 
-	private List<LinkedList<HashTableEntry<K,V>>> createTable(int capacity){
-		return new ArrayList<LinkedList<HashTableEntry<K,V>>>(Collections.nCopies(capacity, new LinkedList<HashTableEntry<K,V>>()));
+	private List<LinkedList<AbstractMap.SimpleEntry<K,V>>> createTable(int capacity){
+		return new ArrayList<LinkedList<AbstractMap.SimpleEntry<K,V>>>(Collections.nCopies(capacity, new LinkedList<AbstractMap.SimpleEntry<K,V>>()));
 	}
 
 	public void resizeTable(int newCapacity){
@@ -32,18 +32,60 @@ public class HashTable<K,V>{
 	}
 
 	public void put(K key, V value){
-		int index = key.hashCode() % this.capacity;
-		LinkedList<HashTableEntry<K,V>> list = this.table.get(index);
-		list.appendToTail(new HashTableEntry<K,V>(key,value));
+		if(key==null){
+			return;
+		}
+		LinkedList<AbstractMap.SimpleEntry<K,V>> list = this.table.get(getIndex(key));
+		list.appendToTail(new AbstractMap.SimpleEntry<K,V>(key,value));
 		this.numEntries++;
 	}
 
-	public LinkedList<HashTableEntry<K,V>> get(K key){
+	public V get(K key){
+		AbstractMap.SimpleEntry<K,V> entry = find(key);
+
+		return (entry == null ? null : entry.getValue());
+
+	}
+
+	public V remove(K key){
+		AbstractMap.SimpleEntry<K,V> entry = find(key);
 		
+		if(entry == null){
+			return null;
+		}
+
+		LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
+		bucketList.remove(entry);
+		
+		return entry.getValue();
+	}
+
+	public boolean contains(K key){
+		AbstractMap.SimpleEntry<K,V> entry = find(key);
+		return entry != null;
 	}
 	
 	public int getNumEntries(){
 		return this.numEntries;
+	}
+
+	protected AbstractMap.SimpleEntry<K,V> find(K key){
+		if(key == null){
+			return null;
+		}
+		LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
+		LinkedListNode<AbstractMap.SimpleEntry<K,V>> runner = (LinkedListNode<AbstractMap.SimpleEntry<K,V>>)bucketList.getHead();
+		
+		while(runner != null && !runner.getData().getKey().equals(key)){
+			runner = runner.getNext();
+		}
+
+		return (runner==null ? null : runner.getData());
+
+	}
+
+	protected int getIndex(K key){
+		return key.hashCode() % this.capacity;
 	}
 
 	protected int getNextGreatestPrime(int val){
@@ -81,34 +123,5 @@ public class HashTable<K,V>{
 		}
 
 		return true;
-	}
-
-
-	final class HashTableEntry<K,V> implements Map.Entry<K,V>{
-		
-		private final K key;
-		private V value;
-
-		HashTableEntry(K key, V value){
-			this.key = key;
-			this.value = value;
-		}
-
-		@Override
-		public K getKey(){
-			return this.key;
-		}
-
-		@Override
-		public V getValue(){
-			return this.value;
-		}
-
-		@Override
-		public V setValue(V newValue){
-			V oldValue = this.value;
-			this.value = newValue;
-			return oldValue;
-		}
 	}
 }

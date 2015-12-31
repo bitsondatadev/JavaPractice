@@ -70,7 +70,7 @@ public class LinkedList<T>{
 	public LinkedListNode search(T data){
 		LinkedListNode<T> runner = head;
 
-		while(runner != null && runner.getData() != data){
+		while(runner != null && !runner.getData().equals(data)){
 			runner = runner.getNext();
 		}
 

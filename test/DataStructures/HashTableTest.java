@@ -104,11 +104,32 @@ public class HashTableTest{
 	@Test
 	public void testPut(){
 		int expected = 0;
+		int key = 0;
+
 
 		assertEquals(expected, hTable.getNumEntries());
+		assertFalse(hTable.contains(key));
 		
-		hTable.put(0,1);
 		expected = 1;
+		hTable.put(key, expected);
 		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, (int)hTable.get(key));
+		assertTrue(hTable.contains(key));
+		assertNull(hTable.get(1));
+
+		key = 1;
+		expected = 2;
+		hTable.put(key, expected);
+		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, (int)hTable.get(key));
+		assertTrue(hTable.contains(key));
+		assertNull(hTable.get(2));
+
+		key = 0;
+		expected = 1;
+		//hTable.remove(key);
+		//assertEquals(expected, hTable.getNumEntries());
+		//assertNull((int)hTable.get(key));
+		//assertFalse(hTable.contains(key));
 	}
 }

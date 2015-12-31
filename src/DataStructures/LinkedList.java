@@ -36,6 +36,8 @@ public class LinkedList<T>{
 	public LinkedListNode appendToTail(T data){
 		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
 
+		this.size++;
+
 		if(head==null){
 			setHead(newNode);
 			setTail(newNode);
@@ -46,13 +48,13 @@ public class LinkedList<T>{
 		this.tail.setNext(newNode);
 		setTail(newNode);
 
-		this.size++;
-
 		return this.head;
 	}
 	
 	public LinkedListNode appendToHead(T data){
 		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
+
+		this.size++;
 
 		if(head==null){
 			setHead(newNode);
@@ -63,8 +65,6 @@ public class LinkedList<T>{
 		newNode.setNext(this.head);
 		this.head.setPrev(newNode);
 		setHead(newNode);
-
-		this.size++;
 
 		return this.head;
 	}
@@ -101,7 +101,7 @@ public class LinkedList<T>{
 		if(node.getNext() != null){
 			node.getNext().setPrev(node.getPrev());
 		}
-
+		
 		this.size--;
 
 		return node;
@@ -123,7 +123,7 @@ public class LinkedList<T>{
 		return str;
 	}
 
-	public int getSize(){
+	public int size(){
 		return this.size;
 	}
 }

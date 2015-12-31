@@ -34,17 +34,21 @@ public class LinkedListTest{
 	}
 
 	@Test
-	public void testAppendFromNull(){
+	public void testAppendAndRemoveFromNull(){
 		Integer expected = new Integer(5);
-		
 		list.appendToTail(expected);
 		assertEquals(expected,list.getHead().getData());
 		assertNull(list.getHead().getNext());
 		assertNull(list.getHead().getPrev());
-	}
 
+		list.remove(expected);
+		assertNull(list.getHead());
+		assertNull(list.getTail());
+		assertEquals(0,list.size());
+	}
+	
 	@Test
-	public void testAppendAfterOneElement(){
+	public void testAppendAndRemoveAfterOneElement(){
 		Integer five = new Integer(5);
 		Integer eight = new Integer(8);
 		
@@ -56,6 +60,25 @@ public class LinkedListTest{
 		
 		assertEquals(five, list.getTail().getPrev().getData());
 		assertEquals(five, list.getHead().getData());
+
+		list.remove(eight);
+		assertEquals(five, list.getHead().getData());
+		assertEquals(five, list.getTail().getData());
+		assertEquals(1, list.size());
+
+		list.appendToTail(eight);
+
+		assertEquals(eight, list.getHead().getNext().getData());
+		assertEquals(eight, list.getTail().getData());
+		
+		assertEquals(five, list.getTail().getPrev().getData());
+		assertEquals(five, list.getHead().getData());
+
+		list.remove(five);
+		assertEquals(eight, list.getHead().getData());
+		assertEquals(eight, list.getTail().getData());
+		assertEquals(1, list.size());
+
 	}
 
 	@Test
@@ -133,7 +156,7 @@ public class LinkedListTest{
 		assertEquals(nine, list.search(nine).getData());
 		assertNull(list.search(4));
 	}
-
+	
 	@Test
 	public void testRemove(){
 		Integer five = new Integer(5);

@@ -107,12 +107,12 @@ public class HashTableTest{
 		int key = 0;
 
 
-		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, hTable.size());
 		assertFalse(hTable.contains(key));
 		
 		expected = 1;
 		hTable.put(key, expected);
-		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, hTable.size());
 		assertEquals(expected, (int)hTable.get(key));
 		assertTrue(hTable.contains(key));
 		assertNull(hTable.get(1));
@@ -120,7 +120,7 @@ public class HashTableTest{
 		key = 1;
 		expected = 2;
 		hTable.put(key, expected);
-		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, hTable.size());
 		assertEquals(expected, (int)hTable.get(key));
 		assertTrue(hTable.contains(key));
 		assertNull(hTable.get(2));
@@ -128,18 +128,29 @@ public class HashTableTest{
 		key = 0;
 		expected = 1;
 		hTable.remove(key);
-		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, hTable.size());
 		assertNull(hTable.get(key));
 		assertFalse(hTable.contains(key));
 
 		key = 32;
 		expected = 2;
 		hTable.put(key, expected);
-		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, hTable.size());
 		assertEquals(expected, (int)hTable.get(key));
 		assertTrue(hTable.contains(key));
-		System.out.println(hTable.toString());
 		hTable.remove(key);
-		System.out.println(hTable.toString());
+	}
+
+	@Test
+	public void testCapacityResize(){
+		int expected = hTable.INIT_TABLE_SIZE;
+		assertEquals(expected, hTable.capacity());
+		
+		expected = hTable.getNextGreatestPrime(expected * 2);
+		for(int i=0; i < (hTable.INIT_TABLE_SIZE + 5); i++){
+			hTable.put(i,i);
+		}
+		assertEquals(expected, hTable.capacity());
+	//	System.out.println(hTable.toString());
 	}
 }

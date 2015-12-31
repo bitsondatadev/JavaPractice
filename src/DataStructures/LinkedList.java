@@ -1,5 +1,7 @@
 package DataStructures;
 
+import java.util.*;
+
 public class LinkedList<T>{
 	
 	private LinkedListNode<T> head = null;
@@ -68,7 +70,7 @@ public class LinkedList<T>{
 	}
 
 	public LinkedListNode search(T data){
-		LinkedListNode<T> runner = head;
+		LinkedListNode<T> runner = this.head;
 
 		while(runner != null && !runner.getData().equals(data)){
 			runner = runner.getNext();
@@ -79,13 +81,46 @@ public class LinkedList<T>{
 
 	public LinkedListNode remove(T data){
 		LinkedListNode<T> node = search(data);
+	
+		if(node==null){
+			return null;
+		}
 
-		node.getPrev().setNext(node.getNext());
-		node.getNext().setPrev(node.getPrev());
+		if(this.head == node){
+			this.head = node.getNext();
+		}
+
+		if(this.tail == node){
+			this.tail = node.getPrev();
+		}
+
+		if(node.getPrev() != null){
+			node.getPrev().setNext(node.getNext());
+		}
+
+		if(node.getNext() != null){
+			node.getNext().setPrev(node.getPrev());
+		}
 
 		this.size--;
 
 		return node;
+	}
+	
+	public String toString(){
+		LinkedListNode<T> runner = this.head;
+		String str = "";
+
+		while(runner != null){
+			str += "|" + runner.getData().toString() + "|";
+			runner = runner.getNext();
+			if(runner != null){
+				str += "-->";
+			}
+		}
+		str += "\n";
+
+		return str;
 	}
 
 	public int getSize(){

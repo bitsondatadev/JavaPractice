@@ -33,4 +33,8 @@ public class LinkedListNode<T>{
 	public void setData(T newData){
 		this.data = newData;
 	}
+	
+	public String toString(){
+		return this.data.toString();
+	}
 }

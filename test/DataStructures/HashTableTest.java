@@ -102,7 +102,7 @@ public class HashTableTest{
 	}
 
 	@Test
-	public void testPut(){
+	public void testPutAndRemove(){
 		int expected = 0;
 		int key = 0;
 
@@ -127,9 +127,19 @@ public class HashTableTest{
 
 		key = 0;
 		expected = 1;
-		//hTable.remove(key);
-		//assertEquals(expected, hTable.getNumEntries());
-		//assertNull((int)hTable.get(key));
-		//assertFalse(hTable.contains(key));
+		hTable.remove(key);
+		assertEquals(expected, hTable.getNumEntries());
+		assertNull(hTable.get(key));
+		assertFalse(hTable.contains(key));
+
+		key = 32;
+		expected = 2;
+		hTable.put(key, expected);
+		assertEquals(expected, hTable.getNumEntries());
+		assertEquals(expected, (int)hTable.get(key));
+		assertTrue(hTable.contains(key));
+		System.out.println(hTable.toString());
+		hTable.remove(key);
+		System.out.println(hTable.toString());
 	}
 }

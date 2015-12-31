@@ -24,27 +24,38 @@ public class HashTable<K,V>{
 	}
 
 	private List<LinkedList<AbstractMap.SimpleEntry<K,V>>> createTable(int capacity){
-		return new ArrayList<LinkedList<AbstractMap.SimpleEntry<K,V>>>(Collections.nCopies(capacity, new LinkedList<AbstractMap.SimpleEntry<K,V>>()));
+		List<LinkedList<AbstractMap.SimpleEntry<K,V>>> newTable = new ArrayList<LinkedList<AbstractMap.SimpleEntry<K,V>>>(capacity);
+		for(int i=0; i < capacity; i++){
+			newTable.add(new LinkedList<AbstractMap.SimpleEntry<K,V>>());
+		}
+		return newTable;
 	}
 
 	public void resizeTable(int newCapacity){
 			
 	}
 
-	public void put(K key, V value){
-		if(key==null){
-			return;
+	public V put(K key, V value){
+		AbstractMap.SimpleEntry<K,V> entry = find(key);
+		if(entry == null){
+			if(key == null){
+				return null;
+			}
+			LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
+			bucketList.appendToTail(new AbstractMap.SimpleEntry<K,V>(key,value));
+			this.numEntries++;
+
+			return null;
 		}
-		LinkedList<AbstractMap.SimpleEntry<K,V>> list = this.table.get(getIndex(key));
-		list.appendToTail(new AbstractMap.SimpleEntry<K,V>(key,value));
-		this.numEntries++;
+		V oldValue = entry.getValue();
+		entry.setValue(value);
+		return oldValue;
 	}
 
 	public V get(K key){
 		AbstractMap.SimpleEntry<K,V> entry = find(key);
 
 		return (entry == null ? null : entry.getValue());
-
 	}
 
 	public V remove(K key){
@@ -57,6 +68,8 @@ public class HashTable<K,V>{
 		LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
 		bucketList.remove(entry);
 		
+		this.numEntries--;
+
 		return entry.getValue();
 	}
 
@@ -81,7 +94,6 @@ public class HashTable<K,V>{
 		}
 
 		return (runner==null ? null : runner.getData());
-
 	}
 
 	protected int getIndex(K key){
@@ -123,5 +135,14 @@ public class HashTable<K,V>{
 		}
 
 		return true;
+	}
+	
+	public String toString(){
+		String str = "";
+		for(int i=0; i < this.capacity; i++){
+			str += "[" + Integer.toString(i) + "]->";
+			str += this.table.get(i).toString();
+		}
+		return str;
 	}
 }

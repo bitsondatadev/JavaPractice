@@ -1,6 +1,7 @@
 package Chapter1;
 
 import org.junit.*;
+import static org.junit.Assert.*;
 
 public class Question1Test{
 	
@@ -17,7 +18,11 @@ public class Question1Test{
 	}
 
 	@Test
-	public void test1(){
-		System.out.println("test1");	
+	public void testIsUnique(){
+		assertFalse(q1.isUnique(null));
+		assertTrue(q1.isUnique(""));
+		assertTrue(q1.isUnique("abcdefghijklmnopqrstuvwxyz1234567890?><!@#$%^&*()_ 	"));
+		assertFalse(q1.isUnique("hello it's me..."));
+		assertFalse(q1.isUnique("  "));
 	}
 }

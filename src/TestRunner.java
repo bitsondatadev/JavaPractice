@@ -19,6 +19,8 @@ public class TestRunner {
 		runTest(DataStructures.LinkedListTest.class);
    	runTest(DataStructures.HashTableTest.class);
    	runTest(Chapter1.Question1Test.class);
+   	runTest(Chapter1.Question2Test.class);
+   	runTest(Chapter1.Question3Test.class);
 	}
 
 	public static void runTest(Class c){

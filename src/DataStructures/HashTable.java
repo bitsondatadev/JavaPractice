@@ -6,27 +6,29 @@ public class HashTable<K,V>{
 
 	protected final int INIT_TABLE_SIZE = 31; 
 	private List<LinkedList<AbstractMap.SimpleEntry<K,V>>> table;
+	private Set<AbstractMap.SimpleEntry<K,V>> entrySet;
 	/*The capacity is the number of buckets in the hash table, and the initial capacity is simply the capacity at the time the hash table is created. The load factor is a measure of how full the hash table is allowed to get before its capacity is automatically increased. When the number of entries in the hash table exceeds the product of the load factor and the current capacity, the hash table is rehashed (that is, internal data structures are rebuilt) so that the hash table has approximately twice the number of buckets.As a general rule, the default load factor (.75) offers a good tradeoff between time and space costs. Higher values decrease the space overhead but increase the lookup cost (reflected in most of the operations of the HashMap class, including get and put).*/
 	private float loadFactor;
 	private int capacity;
-	private int size;
 
 	public HashTable(){
 		setUpTable(INIT_TABLE_SIZE, .75f);
+		this.entrySet = new HashSet<AbstractMap.SimpleEntry<K,V>>(INIT_TABLE_SIZE);
 	}
 
 	public HashTable(int initCapacity){
 		setUpTable(getNextGreatestPrime(initCapacity), .75f);
+		this.entrySet = new HashSet<AbstractMap.SimpleEntry<K,V>>(initCapacity);
 	}
 
 	public HashTable(int initCapacity, float loadFactor){
 		setUpTable(getNextGreatestPrime(initCapacity), loadFactor);
+		this.entrySet = new HashSet<AbstractMap.SimpleEntry<K,V>>(initCapacity, loadFactor);
 	}
 
 	private void setUpTable(int capacity, float loadFactor){
 		this.capacity = capacity;
 		this.table = createTable(capacity);
-		this.size = 0;
 		this.loadFactor = loadFactor;
 	}
 
@@ -59,13 +61,14 @@ public class HashTable<K,V>{
 
 		AbstractMap.SimpleEntry<K,V> entry = find(key);
 		if(entry == null){
-			if((((float)this.size / this.capacity)) > this.loadFactor){
+			if((((float)this.entrySet().size() / this.capacity)) > this.loadFactor){
 				resizeTable(getNextGreatestPrime(this.capacity * 2));
 			}
 
 			LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
-			bucketList.appendToTail(new AbstractMap.SimpleEntry<K,V>(key,value));
-			this.size++;
+			AbstractMap.SimpleEntry<K,V> newEntry = new AbstractMap.SimpleEntry<K,V>(key,value);
+			this.entrySet.add(newEntry);
+			bucketList.appendToTail(newEntry);
 
 			return null;
 		}
@@ -81,6 +84,10 @@ public class HashTable<K,V>{
 		return (entry == null ? null : entry.getValue());
 	}
 
+	public Set<AbstractMap.SimpleEntry<K,V>> entrySet(){
+		return this.entrySet;
+	}
+
 	public V remove(K key){
 		AbstractMap.SimpleEntry<K,V> entry = find(key);
 		
@@ -89,10 +96,9 @@ public class HashTable<K,V>{
 		}
 
 		LinkedList<AbstractMap.SimpleEntry<K,V>> bucketList = this.table.get(getIndex(key));
+		this.entrySet.remove(entry);
 		bucketList.remove(entry);
 		
-		this.size--;
-
 		return entry.getValue();
 	}
 
@@ -102,7 +108,7 @@ public class HashTable<K,V>{
 	}
 	
 	public int size(){
-		return this.size;
+		return this.entrySet.size();
 	}
 
 	protected int capacity(){

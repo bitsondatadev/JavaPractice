@@ -123,6 +123,34 @@ public class LinkedList<T>{
 		return str;
 	}
 
+	public boolean equals(LinkedList<T> rList){
+		LinkedListNode<T> runner = this.head;
+		LinkedListNode<T> rRunner = rList.head;
+		
+		if(this.size != rList.size()){
+			return false;
+		}
+
+		while(runner != null){
+			if(runner.getData() != rRunner.getData()){
+				return false;
+			}
+			runner = runner.getNext();
+			rRunner = rRunner.getNext();
+		}
+		return true;
+	}
+	//only used for testing
+	public void updateSize(){
+		LinkedListNode<T> runner = this.head;
+		this.size = 0;
+
+		while(runner != null){
+			this.size++;
+			runner = runner.getNext();
+		}
+	}
+
 	public int size(){
 		return this.size;
 	}

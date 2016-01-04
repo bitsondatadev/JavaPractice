@@ -21,13 +21,13 @@ public class Question5{
 			char c1 = S1.charAt(i), c3 = 0;
 			char c2 = S2.charAt(i), c4 = 0;
 			if(c1 != c2){
-				if((i + 1) <= S1.length() - 1){
+				if(i < S1.length() - 1){
 					c3 = S1.charAt(i + 1);
 				}
-				if((i + 1) <= S2.length() - 1){
+				if(i < S2.length() - 1){
 					c4 = S2.charAt(i + 1);
 				}
-				if(c1 == c4 || c2 == c3 || (c3 == c4 && c3 != 0)){
+				if(c1 == c3 || c2 == c4 || (c3 == c4 && c3 != 0)){
 					count++;
 					if(count > 1){
 						return false;

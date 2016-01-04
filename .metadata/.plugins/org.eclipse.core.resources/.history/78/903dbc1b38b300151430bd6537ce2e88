@@ -27,7 +27,7 @@ public class Question5{
 				if((i + 1) <= S2.length() - 1){
 					c4 = S2.charAt(i + 1);
 				}
-				if(c1 == c4 || c2 == c3 || (c3 == c4 && c3 != 0)){
+				if(c1 == c3 || c2 == c4 || (c3 == c4 && c3 != 0)){
 					count++;
 					if(count > 1){
 						return false;

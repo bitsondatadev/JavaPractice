@@ -35,6 +35,7 @@ public class Question5Test{
 		assertTrue(q5.isOneAway("ab", "abb"));
 		assertTrue(q5.isOneAway("ba", "bba"));
 		assertTrue(q5.isOneAway("abb", "aab"));
+		assertTrue(q5.isOneAway("abcdefghijklmnopqrstuvwxyz", "aabcdefghijklmnopqrstuvwxyz"));
 		assertTrue(q5.isOneAway("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz"));
 	}
 }

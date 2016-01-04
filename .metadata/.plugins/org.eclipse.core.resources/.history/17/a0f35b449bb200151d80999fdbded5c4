@@ -1,0 +1,22 @@
+package Chapter1;
+
+public class Question5{
+	final int numCharCodes;
+	
+	Question5(){
+		//Assumes Simple ASCII for supported character codes
+		this.numCharCodes = 128;
+	}
+
+	Question5(int numCharCodes){
+		this.numCharCodes = numCharCodes;
+	}
+	
+	public boolean isOneAway(String S1, String S2){
+		if(S1 == null || S2 == null || Math.abs(S1.length() - S2.length()) > 1){
+			return false;
+		}
+		int count = 0, minLength = Math.min(S1.length(), S2.length());
+		return false;
+	}
+}

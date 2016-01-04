@@ -12,7 +12,31 @@ public class Question5{
 		this.numCharCodes = numCharCodes;
 	}
 	
-	boolean isPermutation(String S1, String S2){
-		return false;
+	public boolean isOneAway(String S1, String S2){
+		if(S1 == null || S2 == null || Math.abs(S1.length() - S2.length()) > 1){
+			return false;
+		}
+		int count = 0, minLength = Math.min(S1.length(), S2.length());
+		for(int i=0; i < minLength; i++){
+			char c1 = S1.charAt(i), c3 = 0;
+			char c2 = S2.charAt(i), c4 = 0;
+			if(c1 != c2){
+				if(i < S1.length() - 2){
+					c3 = S1.charAt(i + 1);
+				}
+				if(i < S2.length() - 2){
+					c4 = S2.charAt(i + 1);
+				}
+				if(c1 == c3 || c2 == c4 || (c3 == c4 && c3 != 0)){
+					count++;
+					if(count > 1){
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

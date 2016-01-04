@@ -22,6 +22,7 @@ public class TestRunner {
    	runTest(Chapter1.Question2Test.class);
    	runTest(Chapter1.Question3Test.class);
    	runTest(Chapter1.Question4Test.class);
+   	runTest(Chapter1.Question5Test.class);
    	runTest(Chapter2.Question1Test.class);
    	runTest(Chapter2.Question2Test.class);
 	}

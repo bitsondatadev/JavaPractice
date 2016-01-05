@@ -15,16 +15,28 @@ public class TestRunner {
 	public static final String ANSI_WHITE = "\u001B[37m";
    
 	public static void main(String[] args) {
+		/*
+		 * Run Data Structures Tests
+		 */
 		runTest(DataStructures.LinkedListNodeTest.class);
 		runTest(DataStructures.LinkedListTest.class);
-   	runTest(DataStructures.HashTableTest.class);
-   	runTest(Chapter1.Question1Test.class);
-   	runTest(Chapter1.Question2Test.class);
-   	runTest(Chapter1.Question3Test.class);
-   	runTest(Chapter1.Question4Test.class);
-   	runTest(Chapter1.Question5Test.class);
-   	runTest(Chapter2.Question1Test.class);
-   	runTest(Chapter2.Question2Test.class);
+	   	runTest(DataStructures.HashTableTest.class);
+	   	
+	   	/*
+		 * Run Chapter1 Tests
+		 */
+	   	runTest(Chapter1.Question1Test.class);
+	   	runTest(Chapter1.Question2Test.class);
+	   	runTest(Chapter1.Question3Test.class);
+	   	runTest(Chapter1.Question4Test.class);
+	   	runTest(Chapter1.Question5Test.class);
+	   	
+	   	/*
+		 * Run Chapter2 Tests
+		 */
+	   	runTest(Chapter2.Question1Test.class);
+	   	runTest(Chapter2.Question2Test.class);
+	   	runTest(Chapter2.Question3Test.class);
 	}
 
 	public static void runTest(Class c){

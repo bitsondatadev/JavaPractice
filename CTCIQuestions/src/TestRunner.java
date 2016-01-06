@@ -21,6 +21,8 @@ public class TestRunner {
 		runTest(DataStructures.LinkedListNodeTest.class);
 		runTest(DataStructures.LinkedListTest.class);
 	   	runTest(DataStructures.HashTableTest.class);
+	   	runTest(DataStructures.StackTest.class);
+	   	runTest(DataStructures.QueueTest.class);
 	   	
 	   	/*
 		 * Run Chapter1 Tests

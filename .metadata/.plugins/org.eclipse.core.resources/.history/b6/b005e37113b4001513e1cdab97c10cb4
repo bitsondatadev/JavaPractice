@@ -1,0 +1,12 @@
+package DataStructures;
+
+public class Stack<T>{
+
+	private LinkedList<T> linkedList;
+
+	public Stack(){
+		this.linkedList = new LinkedList<T>();	
+	}
+
+
+}

@@ -77,6 +77,23 @@ public class LinkedList<T>{
 		return runner;
 	}
 
+	public LinkedListNode<T> removeTail(){
+		if(this.tail == null){
+			return null;
+		}
+		LinkedListNode<T> oldTail = this.tail;
+		
+		this.tail = oldTail.getPrev();
+		if(this.tail != null){
+			this.tail.setNext(null);
+		}
+		
+		oldTail.setPrev(null);
+		this.size--;
+		
+		return oldTail;
+	}
+
 	public LinkedListNode<T> remove(T data){
 		LinkedListNode<T> node = search(data);
 	

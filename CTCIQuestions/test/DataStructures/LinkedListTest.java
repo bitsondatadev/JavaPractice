@@ -81,7 +81,7 @@ public class LinkedListTest{
 	}
 
 	@Test
-	public void testAppendAfterTwoElement(){
+	public void testAppendAndRemoveTailAfterTwoElements(){
 		Integer five = new Integer(5);
 		Integer nine = new Integer(9);
 		Integer eight = new Integer(8);
@@ -95,6 +95,16 @@ public class LinkedListTest{
 
 		assertEquals(nine, list.getHead().getNext().getData());
 		assertEquals(nine, list.getTail().getPrev().getData());
+		
+		list.removeTail();
+		
+		assertEquals(nine, list.getHead().getNext().getData());
+		assertEquals(nine, list.getTail().getData());
+		
+		assertEquals(five, list.getTail().getPrev().getData());
+		assertEquals(five, list.getHead().getData());
+		
+		assertEquals(2, list.size());
 	}
 
 	@Test

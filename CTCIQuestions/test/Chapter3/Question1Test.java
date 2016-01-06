@@ -1,17 +1,16 @@
 package Chapter3;
 
-import DataStructures.*;
-
 import org.junit.*;
-
 import static org.junit.Assert.*;
 
 public class Question1Test{
 	Question1<Integer> q1;
+	int n;
 
 	@Before
 	public void setUp(){
-		q1 = new Question1<Integer>(Integer.class, 20);
+		n = 20;
+		q1 = new Question1<Integer>(Integer.class, n);
 	}
 
 	@After
@@ -76,6 +75,46 @@ public class Question1Test{
 			assertTrue(q1.empty(i));
 		}
 	}
+	
+	@Test
+	public void testPushNElements(){
+		for(int i=0; i < this.n ; i++){
+			Integer number = new Integer(i);
+			int stackId = (i % 3) + 1;
+			q1.push(number, stackId);
+			
+			assertEquals(i + 1, q1.size());
+			assertEquals(number,q1.peek(stackId));
 
+		}
+		
+		for(int i=this.n; i <= 0; i++){
+			Integer number = new Integer(i);
+			int stackId = (i % 3) + 1;
+			assertEquals(number,q1.peek(stackId));
+			assertEquals(number,q1.pop(stackId));
+			assertEquals(i + 1, q1.size());
+			
+
+		}
+	}
+	
+	@Test
+	public void testPushStack3OverTheEdge(){
+		for(int i=0; i < this.n ; i++){
+			Integer number = new Integer(i);
+			q1.push(number, 3);
+			
+			assertEquals(i + 1, q1.size());
+			assertEquals(number,q1.peek(3));
+		}
+		
+		for(int i=this.n; i <= 0; i++){
+			Integer number = new Integer(i);
+			assertEquals(number,q1.peek(3));
+			assertEquals(number,q1.pop(3));
+			assertEquals(i + 1, q1.size());
+		}
+	}
 
 }

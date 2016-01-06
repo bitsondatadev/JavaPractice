@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Question3Test" project="CTCIQuestions" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="Chapter2.Question3Test" incomplete="true">
-    <testcase name="testRemoveDuplicates" classname="Chapter2.Question3Test" incomplete="true"/>
-  </testsuite>
-</testrun>

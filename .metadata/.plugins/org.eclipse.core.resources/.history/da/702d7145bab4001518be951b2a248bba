@@ -169,8 +169,4 @@ public class LinkedList<T>{
 	public int size(){
 		return this.size;
 	}
-	
-	public boolean empty(){
-		return this.size == 0;
-	}
 }

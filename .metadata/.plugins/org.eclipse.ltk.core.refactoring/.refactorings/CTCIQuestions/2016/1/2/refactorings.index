@@ -10,3 +10,7 @@
 1452055518360	Copy compilation unit
 1452101522420	Rename method 'resizeArray'
 1452104173788	Rename local variable 'spaceToRemove'
+1452114454719	Copy compilation unit
+1452114479175	Rename type 'Stack'
+1452116234044	Copy compilation unit
+1452116246682	Rename type 'StackTest'

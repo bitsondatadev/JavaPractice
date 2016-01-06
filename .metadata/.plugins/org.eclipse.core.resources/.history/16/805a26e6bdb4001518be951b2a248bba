@@ -44,7 +44,6 @@ public class TestRunner {
 		 * Run Chapter3 Tests
 		 */
 	   	runTest(Chapter3.Question1Test.class);
-	   	runTest(Chapter3.Question2Test.class);
 	}
 
 	public static void runTest(Class c){

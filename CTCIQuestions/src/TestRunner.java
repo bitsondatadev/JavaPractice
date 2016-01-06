@@ -39,6 +39,11 @@ public class TestRunner {
 	   	runTest(Chapter2.Question1Test.class);
 	   	runTest(Chapter2.Question2Test.class);
 	   	runTest(Chapter2.Question3Test.class);
+	   	
+	   	/*
+		 * Run Chapter3 Tests
+		 */
+	   	runTest(Chapter3.Question1Test.class);
 	}
 
 	public static void runTest(Class c){

@@ -6,7 +6,7 @@ BINPATH = $(TOPPATH)bin
 JAVAC = javac 
 JAVA  = java 
 
-PACKAGES = ch1 ch2
+PACKAGES = ch1 ch2 ch3
 
 all: test 
 
@@ -18,6 +18,9 @@ ch1:datastructs src/Chapter1/*.java test/Chapter1/*.java
 
 ch2:datastructs src/Chapter2/*.java test/Chapter2/*.java
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Chapter2/*.java $(TOPPATH)test/Chapter2/*.java
+
+ch3:datastructs src/Chapter3/*.java test/Chapter3/*.java
+	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Chapter3/*.java $(TOPPATH)test/Chapter3/*.java
 
 main:src/Main.java $(PACKAGES)
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Main.java

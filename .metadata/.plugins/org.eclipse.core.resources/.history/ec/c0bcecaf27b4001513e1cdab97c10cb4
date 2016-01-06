@@ -1,0 +1,64 @@
+package Chapter3;
+
+import java.lang.reflect.Array;
+
+public class Question1<T>{
+
+	private T[] arr;
+	private int s1, s2, s3, c1, c2, c3;
+
+	public Question1(Class<T> clazz, int n){
+		this.arr = (T[])Array.newInstance(clazz, n);
+		this.s1 = 0;
+		this.s2 = (int) Math.ceil(n * .3333);
+		this.s3 = this.s2 * 2;
+	}
+	
+	public boolean empty(int stack){
+		switch(stack){
+		case 1: return c1==0;
+		case 2: return c2==0;
+		case 3: return c3==0;
+		}
+		return false;
+	}
+	
+	public T peek(){
+		if(this.linkedList.getTail() == null){
+			return null;
+		}
+		return this.linkedList.getTail().getData();
+	}
+	
+	public T pop(){
+		if(this.empty()){
+			return null;
+		}
+		LinkedListNode<T> val = this.linkedList.removeTail();
+		return val.getData();
+	}
+	
+	public T push(T item, int stack){
+		if(item == null){
+			return null;
+		}
+		
+		switch(stack){
+		case 1: 
+			
+			break;
+		case 2: 
+			
+			break;
+		case 3: 
+			
+			break;
+		}
+		
+		return item;
+	}
+	
+	public int size(){
+		return this.linkedList.size();
+	}
+}

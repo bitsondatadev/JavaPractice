@@ -1,0 +1,52 @@
+package Chapter3;
+
+import java.util.ArrayList;
+import java.util.List;
+import DataStructures.*;
+
+public class Question3<T>{
+
+	private List<Stack<T>> stack;
+	private final int threshold;
+	private int currentStackIndex;
+
+	public Question3(int threshold){
+		this.stack = new ArrayList<Stack<T>>();
+		this.stack.add(new Stack<T>());
+		this.threshold = threshold;
+		this.currentStackIndex = 0;
+	}
+	
+	public boolean empty(){
+		return this.stack.size() == 0;
+	}
+	
+	public T peek(){
+		if(this.stack.getTail() == null){
+			return null;
+		}
+		return this.stack.getTail().getData();
+	}
+	
+	public T pop(){
+		if(this.empty()){
+			return null;
+		}
+		LinkedListNode<T> val = this.stack.removeTail();
+		return val.getData();
+	}
+	
+	public T push(T item){
+		if(item == null){
+			return null;
+		}
+		
+		this.stack.appendToTail(item);
+		
+		return item;
+	}
+	
+	public int size(){
+		return this.stack.size();
+	}
+}

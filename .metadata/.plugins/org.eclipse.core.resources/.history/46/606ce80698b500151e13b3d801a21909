@@ -1,0 +1,44 @@
+package DataStructures;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class BinaryTreeNode<T extends Object>{
+	private TreeNode<T> node;
+
+	public BinaryTreeNode(T data){
+		this.node.children = new ArrayList<TreeNode<T>>();
+		this.node.branchingFactor = DEFAULT_BRANCHING_FACTOR;
+		this.node.setData(data);	
+	}
+	
+	public BinaryTreeNode(T data, int numChildren){
+		this.node.children = new ArrayList<TreeNode<T>>();
+		this.node.branchingFactor = numChildren;
+		this.node.setData(data);	
+	}
+	
+	public BinaryTreeNode(TreeNode<T> parent, T data){
+		this.node.parent = parent;
+		this.node.children = new ArrayList<TreeNode<T>>();
+		this.node.branchingFactor = DEFAULT_BRANCHING_FACTOR;
+		this.node.setData(data);	
+	}
+	
+	public BinaryTreeNode(TreeNode<T> parent, T data, int numChildren){
+		initNode(parent, data, numChildren)
+	}
+	
+	private void initNode(TreeNode<T> parent, T data, int numChildren){
+		this.node.parent = parent;
+		this.node.children = new ArrayList<TreeNode<T>>();
+		this.node.branchingFactor = numChildren;
+		this.node.setData(data);
+	}
+
+	public List<TreeNode<T>> getChildren() {
+		return children;
+	}
+
+}

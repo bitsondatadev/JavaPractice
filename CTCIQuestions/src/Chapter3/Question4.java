@@ -52,17 +52,11 @@ public class Question4<T>{
 	}
 	
 	private void swapStacks(){
-		if(this.pushStack.size() > 0){
+		if(this.pushStack.size() > 0 && this.popStack.empty()){
 			T val = this.pushStack.pop();
 			while(val != null){
 				this.popStack.push(val);
 				val = this.pushStack.pop();
-			}
-		}else{
-			T val = this.popStack.pop();
-			while(val != null){
-				this.pushStack.push(val);
-				val = this.popStack.pop();
 			}
 		}
 	}

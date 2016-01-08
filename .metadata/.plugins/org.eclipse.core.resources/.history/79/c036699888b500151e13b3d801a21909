@@ -1,0 +1,52 @@
+package DataStructures;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.function.Function;
+
+public class TreeNode<T>{
+
+	private List<TreeNode<T>> children = null;
+	private Function<T,T> visit = null;
+	private T data;
+
+	public TreeNode(T data){
+		this.children = new ArrayList<TreeNode<T>>();
+		this.visit = new Function<T,T>();
+		this.setData(data);	
+	}
+
+	public List<TreeNode<T>> getChildren() {
+		return children;
+	}
+
+	public void appendChild(TreeNode<T> child) {
+		this.children.add(child);
+	}
+
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
+	}
+	
+	private void run(TreeTask<T> t, T data){
+		this.visit(data);
+	}
+	
+	public static void inOrderTraversal(TreeNode<Object> node){
+		if(node != null){
+			for(TreeNode<Object> child: node.getChildren()){
+				visit(child.getData());
+			}
+		}
+	}
+
+}
+
+interface TreePrint<T>{
+	void print(T data);
+}
+

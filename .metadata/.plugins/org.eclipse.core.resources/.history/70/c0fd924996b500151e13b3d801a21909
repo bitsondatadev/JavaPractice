@@ -1,0 +1,27 @@
+package DataStructures;
+
+
+public class BinaryTreeNode<T extends Object> extends TreeNode<T>{
+
+	public BinaryTreeNode(T data){
+		super(data);
+	}
+
+
+	public boolean appendChild(BinaryTreeNode<T> child) {
+		if(this.children.size() == this.m ){
+			return false;
+		}
+		
+		return this.children.add(child);
+	}
+	
+	public boolean removeChild(BinaryTreeNode<T> child) {
+		if(this.children.size() >= this.m ){
+			return false;
+		}
+		
+		return this.children.add(child);
+	}
+
+}

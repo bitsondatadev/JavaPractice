@@ -1,6 +1,9 @@
 package DataStructures;
 
-public class LinkedListNode<T>{
+import java.util.ArrayList;
+import java.util.List;
+
+public class LinkedListNode<T> implements Node<T>{
 
 	private LinkedListNode<T> next = null;
 	private LinkedListNode<T> prev = null;
@@ -36,5 +39,12 @@ public class LinkedListNode<T>{
 	
 	public String toString(){
 		return this.data.toString();
+	}
+
+	public List<Node<T>> getChildren() {
+		List<Node<T>> list = new ArrayList<Node<T>>();
+		list.add(next);
+		list.add(prev);
+		return list;
 	}
 }

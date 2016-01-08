@@ -1,0 +1,65 @@
+package DataStructures;
+
+import java.util.List;
+
+
+public class BinaryTreeNode<T extends Object> implements Node<T>{
+	private TreeNode<T> node;
+	private static final int LEFT_INDEX = 0;
+	private static final int RIGHT_INDEX = 0;
+
+	public BinaryTreeNode(T data){
+		initNode(null, data, TreeNode.DEFAULT_BRANCHING_FACTOR);
+	}
+	
+	public BinaryTreeNode(T data, int numChildren){
+		initNode(null, data, numChildren);
+	}
+	
+	public BinaryTreeNode(TreeNode<T> parent, T data){
+		initNode(parent, data, TreeNode.DEFAULT_BRANCHING_FACTOR);
+	}
+	
+	public BinaryTreeNode(TreeNode<T> parent, T data, int numChildren){
+		initNode(parent, data, numChildren);
+	}
+	
+	private void initNode(TreeNode<T> parent, T data, int numChildren){
+		this.node = new TreeNode<T>(parent, data ,numChildren);
+	}
+
+	public List<Node<T>> getChildren() {
+		return node.getChildren();
+	}
+	
+	/**
+	 * Left Node will always be at index 0 by convention.
+	 * @return
+	 */
+	public Node<T> getLeftNode(){
+		if(this.node == null || this.node.getChildren().size() == 0 || this.node.getChildren() == null){
+			return null;
+		}
+		return this.node.getChildren().get(0);
+	}
+	
+	/**
+	 * Right Node will always be at index 1 by convention.
+	 * @return
+	 */
+	public Node<T> getRightNode(){
+		if(this.node == null || this.node.getChildren().size() < 2 || this.node.getChildren() == null){
+			return null;
+		}
+		return this.node.getChildren().get(1);
+	}
+	
+	public T getData() {
+		return node.getData();
+	}
+
+	public void setData(T data) {
+		this.setData(data);;
+	}
+
+}

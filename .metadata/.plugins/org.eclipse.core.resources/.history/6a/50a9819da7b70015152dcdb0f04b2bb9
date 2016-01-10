@@ -1,0 +1,67 @@
+package Algorithms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+public class BinarySearchTest{
+	List<Integer> arr;
+	List<String> strArr;
+	BinarySearch<Integer> bs;
+	BinarySearch<String> bsString;
+
+	@Before
+	public void setUp(){
+		arr = new ArrayList<Integer>();
+		strArr = new ArrayList<String>();
+		bs = new BinarySearch<Integer>();
+		bsString = new BinarySearch<String>();
+	}
+
+	@After
+	public void tearDown(){
+
+	}
+
+	@Test
+	public void testBinarySearch(){
+		int expected = -1;
+		assertEquals(expected, bs.binarySearch(arr, 1));
+		assertEquals(expected, bs.binarySearchRecursive(arr, 1));
+		assertEquals(expected, bs.binarySearch(null, 1));
+		assertEquals(expected, bs.binarySearchRecursive(null, 1));
+		
+		assertEquals(expected, bsString.binarySearch(strArr, "1"));
+		assertEquals(expected, bsString.binarySearchRecursive(strArr, "1"));
+		assertEquals(expected, bsString.binarySearch(null, "1"));
+		assertEquals(expected, bsString.binarySearchRecursive(null, "1"));
+		
+		for(expected = 0; expected < 10; expected++){
+			String expectedString = Integer.toString(expected);
+			arr.add(expected);
+			strArr.add(expectedString);
+			assertEquals(expected, bs.binarySearch(arr, expected));
+			assertEquals(expected, bs.binarySearchRecursive(arr, expected));
+			assertEquals(expected, bsString.binarySearch(strArr, expectedString));
+			assertEquals(expected, bsString.binarySearchRecursive(strArr, expectedString));
+		}
+		
+		expected = -1;
+		
+		for(int i = 0; i < 10; i++){
+			String expectedString = Integer.toString(i);
+			arr.remove(new Integer(i));
+			System.out.println(i);
+			strArr.remove(expectedString);
+			assertEquals(expected, bs.binarySearch(arr, i));
+			assertEquals(expected, bs.binarySearchRecursive(arr, i));
+			assertEquals(expected, bsString.binarySearch(strArr, expectedString));
+			assertEquals(expected, bsString.binarySearchRecursive(strArr, expectedString));
+		}
+		
+		
+	}
+}

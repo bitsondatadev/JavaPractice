@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="isOneAway" key="selection"/>
+		<item value="datastructs" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="datastructs"/>
+			<item value="cache"/>
+			<item value="for(int j = 0; j &lt; c - 1; j++){"/>
 			<item value="isPalindromePermutation"/>
 			<item value="q4"/>
 		</list>

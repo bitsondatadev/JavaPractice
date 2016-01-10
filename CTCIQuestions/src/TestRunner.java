@@ -24,6 +24,12 @@ public class TestRunner {
 	   	runTest(DataStructures.StackTest.class);
 	   	runTest(DataStructures.QueueTest.class);
 	   	
+		/*
+		 * Run Algorithms Tests
+		 */
+		runTest(Algorithms.BinarySearchTest.class);
+
+	   	
 	   	/*
 		 * Run Chapter1 Tests
 		 */
@@ -53,7 +59,7 @@ public class TestRunner {
 		 */
 	   	runTest(Chapter8.Question1Test.class);
 	   	runTest(Chapter8.Question2Test.class);
-	   	//runTest(Chapter8.Question3Test.class);
+	   	runTest(Chapter8.Question3Test.class);
 	   	//runTest(Chapter8.Question4Test.class);
 	}
 

@@ -28,3 +28,9 @@
 1452208236408	Copy compilation unit
 1452209278896	Rename field 'm'
 1452211577909	Rename field 'DEFAULT_BRANCHING_FACTOR'
+1452360719840	Copy compilation unit
+1452361412891	Copy compilation unit
+1452374347518	Copy compilation unit
+1452374365648	Copy compilation unit
+1452374531200	Encapsulate field 'x'
+1452381792014	Rename local variable 'memo'

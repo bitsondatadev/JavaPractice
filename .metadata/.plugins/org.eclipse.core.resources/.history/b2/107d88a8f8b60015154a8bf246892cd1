@@ -1,0 +1,37 @@
+package Chapter8;
+
+import java.util.Arrays;
+
+public class Question1{
+	private int memo[];
+	private int n;
+	
+	public Question1(int n){
+		this.n = n;
+		this.memo = new int[n + 1];
+		Arrays.fill(this.memo, -1);
+		this.memo[n] = 1;
+	}
+	
+	public void setN(int n){
+		this.n = n;
+	}
+	
+	public int computeCount(){
+		return computeCount(0);
+	}
+	
+	private int computeCount(int sum){
+		if(this.memo[sum] != -1){
+			return this.memo[sum];
+		}
+		
+		for(int i=1; i <=3; i++){
+			if(sum + i <= this.n){
+				this.memo[sum] += computeCount(sum + i);
+			}
+		}
+		
+		return this.memo[sum];
+	}
+}

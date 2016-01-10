@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Question2Test (1)" project="CTCIQuestions" tests="2" started="2" failures="0" errors="1" ignored="1">
+  <testsuite name="Chapter8.Question2Test" time="90.498">
+    <testcase name="testGetPath" classname="Chapter8.Question2Test" time="0.0" ignored="true"/>
+    <testcase name="testAlmostFullGridGetPath" classname="Chapter8.Question2Test" time="90.498">
+      <error>java.lang.OutOfMemoryError: Java heap space&#13;
+	at java.util.HashMap.resize(Unknown Source)&#13;
+	at java.util.HashMap.putVal(Unknown Source)&#13;
+	at java.util.HashMap.put(Unknown Source)&#13;
+	at Chapter8.Question2.getPath(Question2.java:103)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+	at Chapter8.Question2.getPath(Question2.java:98)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Question2Test (1)" project="CTCIQuestions" tests="2" started="2" failures="0" errors="0" ignored="1">
+  <testsuite name="Chapter8.Question2Test" time="0.0">
+    <testcase name="testGetPath" classname="Chapter8.Question2Test" time="0.0" ignored="true"/>
+    <testcase name="testAlmostFullGridGetPath" classname="Chapter8.Question2Test" time="0.0"/>
+  </testsuite>
+</testrun>

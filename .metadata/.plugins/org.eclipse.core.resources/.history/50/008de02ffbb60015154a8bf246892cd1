@@ -1,0 +1,45 @@
+package Chapter8;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class Question1Test{
+	
+	Question1 q1;
+
+	@Before
+	public void setUp(){
+		q1 = new Question1();
+	}
+
+	@After
+	public void tearDown(){
+
+	}
+
+	@Test
+	public void testComputeCount(){
+		int expected = 25;
+		assertEquals(expected, q1.computeCount());
+		
+		q1.setN(0);
+		expected = 0;
+		assertEquals(expected, q1.computeCount());
+		
+		q1.setN(1);
+		expected = 1;
+		assertEquals(expected, q1.computeCount());
+		
+		q1.setN(2);
+		expected = 2;
+		assertEquals(expected, q1.computeCount());
+		
+		q1.setN(3);
+		expected = 4;
+		assertEquals(expected, q1.computeCount());
+		
+		q1.setN(5);
+		expected = 13;
+		assertEquals(expected, q1.computeCount());
+	}
+}

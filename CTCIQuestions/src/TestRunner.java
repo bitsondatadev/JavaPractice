@@ -47,6 +47,14 @@ public class TestRunner {
 	   	runTest(Chapter3.Question2Test.class);
 	   	runTest(Chapter3.Question3Test.class);
 	   	runTest(Chapter3.Question4Test.class);
+
+	   	/*
+		 * Run Chapter8 Tests
+		 */
+	   	runTest(Chapter8.Question1Test.class);
+	   	runTest(Chapter8.Question2Test.class);
+	   	//runTest(Chapter8.Question3Test.class);
+	   	//runTest(Chapter8.Question4Test.class);
 	}
 
 	public static void runTest(Class c){

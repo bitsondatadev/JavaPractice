@@ -1,0 +1,37 @@
+package Chapter8;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class Question2Test{
+	
+	Question2 q2;
+	boolean[][] grid;
+
+	@Before
+	public void setUp(){
+		q2 = new Question2();
+	}
+
+	@After
+	public void tearDown(){
+
+	}
+
+	@Test
+	public void testGetPath(){
+		grid = new boolean[3][4];
+		grid[0][0] = true;
+		grid[0][1] = true;
+		grid[0][2] = true;
+		grid[1][2] = true;
+		grid[2][2] = true;
+		
+		assertNull(q2.getPath(grid));
+		
+		grid[2][3] = true;
+		
+		assertEquals(6, q2.getPath(grid).size());
+		
+	}
+}

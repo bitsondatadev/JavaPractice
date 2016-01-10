@@ -5,13 +5,8 @@ import java.util.List;
 /**
  * BinarySearch algorithms that require that type T implements comparable.
  * 
- * Iterative:
- *  - Time Complexity: O(log(n))
- *  - Space Complexity: O(1)
- * 
- * Recursive:
- *  - Time Complexity: O(log(n))
- *  - Space Complexity: O(log(n)) //Due to maintaining the variables on the recursion stack
+ * Time Complexity: O(log(n))
+ * Space Complexity: O(1)
  * 
  * Assumptions: Input array is a distinct sorted list.
  * 

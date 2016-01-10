@@ -5,13 +5,8 @@ import java.util.List;
 /**
  * BinarySearch algorithms that require that type T implements comparable.
  * 
- * Iterative:
- *  - Time Complexity: O(log(n))
- *  - Space Complexity: O(1)
- * 
- * Recursive:
- *  - Time Complexity: O(log(n))
- *  - Space Complexity: O(log(n)) //Due to maintaining the variables on the recursion stack
+ * Time Complexity: O(log(n))
+ * Space Complexity: O(1)
  * 
  * Assumptions: Input array is a distinct sorted list.
  * 
@@ -23,13 +18,7 @@ import java.util.List;
  * Another interesting thing I learned was about how to use Generics with static methods. Notice the <T> I place after
  * each method. What this does is allows me to specify the type at runtime and the static method (having already been
  * created) will assume that I am being honest and T will indeed extend Comparable<? super>. Otherwise i'm in crash city.
- * This is why we have to two cast warnings below when I call the compareTo method. Now I don't have to create instance
- * objects every time I want to call binary search. :)
- * 
- * Links:
- * 
- * http://stackoverflow.com/questions/8860847/how-to-call-static-method-from-a-generic-class?lq=1
- * http://stackoverflow.com/questions/936377/static-method-in-a-generic-class
+ * This is why we have to two cast warnings below when I call the compareTo method.
  * 
  * @author Brian
  *

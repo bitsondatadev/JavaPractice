@@ -37,7 +37,7 @@ public class Question4Test{
 		expected = (int) Math.pow(2.0, set.size());
 		list = q4.generatePowerSet(set);
 		assertEquals(expected, list.size());
-		System.out.println(list);
+		//System.out.println(list);
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class Question4Test{
 		expected = (int) Math.pow(2.0, set.size());
 		list = q4.generatePowerSet(set);
 		assertEquals(expected, list.size());
-		System.out.println(list);
+		//System.out.println(list);
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ public class Question4Test{
 		expected = (int) Math.pow(2.0, set.size());
 		list = q4.generatePowerSet(set);
 		assertEquals(expected, list.size());
-		System.out.println(list);
+		//System.out.println(list);
 	}
 	@Test
 	public void testGeneratePowerSet3(){
@@ -75,7 +75,7 @@ public class Question4Test{
 		expected = (int) Math.pow(2.0, set.size());
 		list = q4.generatePowerSet(set);
 		assertEquals(expected, list.size());
-		System.out.println(list);
+		//System.out.println(list);
 	}
 	
 	

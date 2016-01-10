@@ -1,0 +1,33 @@
+package Algorithms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+public class Question1Test{
+	List<Integer> arr;
+	BinarySearch<Integer> bs;
+
+	@Before
+	public void setUp(){
+		arr = new ArrayList<Integer>();
+		bs = new BinarySearch<Integer>();
+	}
+
+	@After
+	public void tearDown(){
+
+	}
+
+	@Test
+	public void testBinarySearch(){
+		
+		for(int i = 0; i < 10; i++){
+			arr.add(i);
+			assertEquals(i, bs.binarySearch(arr, new Integer(i)));
+		}
+	}
+}

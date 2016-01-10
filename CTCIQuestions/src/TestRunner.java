@@ -60,10 +60,10 @@ public class TestRunner {
 	   	runTest(Chapter8.Question1Test.class);
 	   	runTest(Chapter8.Question2Test.class);
 	   	runTest(Chapter8.Question3Test.class);
-	   	//runTest(Chapter8.Question4Test.class);
+	   	runTest(Chapter8.Question4Test.class);
 	}
 
-	public static void runTest(Class c){
+	public static void runTest(Class<?> c){
 		System.out.println(ANSI_CYAN + "Running Tests for " + c.getName() + " class."  + ANSI_RESET);
 		Result result = JUnitCore.runClasses(c);
 		if(result.wasSuccessful()){

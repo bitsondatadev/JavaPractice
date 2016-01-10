@@ -21,7 +21,7 @@ public class Question1Test{
 	public void testComputeCount(){
 		int expected = 274;
 		assertEquals(expected, q1.computeCount());
-		assertEquals(expected, q1.countWays(q1.INIT_N));
+		assertEquals(expected, q1.countWays(Question1.INIT_N));
 		
 		q1.setN(0);
 		expected = 1;

@@ -1,19 +1,23 @@
 package DataStructures;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node<T extends Comparable<? super T>>{
 	private T id;
+	private boolean visited;
 	private List<Node<T>> neighbors;
 	
-	Node(){
+	public Node(){
 		this.setId(null);
-		this.neighbors = null;
+		this.neighbors = new ArrayList<Node<T>>();
+		this.setVisited(false);
 	}
 	
-	Node(T id){
+	public Node(T id){
 		this.setId(id);
-		this.neighbors = null;
+		this.neighbors = new ArrayList<Node<T>>();
+		this.setVisited(false);
 	}
 
 	public T getId() {
@@ -26,6 +30,14 @@ public class Node<T extends Comparable<? super T>>{
 	
 	public List<Node<T>> getNeighbors(){
 		return this.neighbors;
+	}
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
 	}
 	
 }

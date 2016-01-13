@@ -36,7 +36,7 @@ public class LinkedList<T>{
 
 		this.size++;
 
-		if(head==null){
+		if(this.head==null){
 			setHead(newNode);
 			setTail(newNode);
 			return newNode;	
@@ -86,6 +86,8 @@ public class LinkedList<T>{
 		this.tail = oldTail.getPrev();
 		if(this.tail != null){
 			this.tail.setNext(null);
+		}else{
+			this.head = null;
 		}
 		
 		oldTail.setPrev(null);

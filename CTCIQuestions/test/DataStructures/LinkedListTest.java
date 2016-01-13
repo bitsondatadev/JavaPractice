@@ -44,6 +44,13 @@ public class LinkedListTest{
 		assertNull(list.getHead());
 		assertNull(list.getTail());
 		assertEquals(0,list.size());
+		
+		//Added this to make sure the head and tail go back to null after calling removeTail
+		list.appendToTail(expected);
+		list.removeTail();
+		assertNull(list.getHead());
+		assertNull(list.getTail());
+		assertEquals(0,list.size());
 	}
 	
 	@Test

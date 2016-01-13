@@ -55,6 +55,14 @@ public class TestRunner {
 	   	runTest(Chapter3.Question2Test.class);
 	   	runTest(Chapter3.Question3Test.class);
 	   	runTest(Chapter3.Question4Test.class);
+	   	
+	   	/*
+		 * Run Chapter4 Tests
+		 */
+	   	runTest(Chapter4.Question1Test.class);
+	   	//runTest(Chapter4.Question2Test.class);
+	   	//runTest(Chapter4.Question3Test.class);
+	   	//runTest(Chapter4.Question4Test.class);
 
 	   	/*
 		 * Run Chapter8 Tests

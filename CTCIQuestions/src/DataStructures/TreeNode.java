@@ -3,7 +3,24 @@ package DataStructures;
 import java.util.Collection;
 
 /**
- * Binary Tree Node.
+ * Binary Tree
+ *  n - number of nodes
+ * 
+ * Build Tree:
+ *  - Time Complexity: O(n)
+ *  - Space Complexity: O(n)
+ * 
+ * Search:
+ *  - Time Complexity: O(log(n))
+ *  - Space Complexity: O(1)
+ * 
+ * Insert:
+ *  - Time Complexity: O(log(n))
+ *  - Space Complexity: O(1)
+ *  
+ *  Remove:
+ *  - Time Complexity: O(log(n))
+ *  - Space Complexity: O(1)
  * 
  * @author Brian
  *

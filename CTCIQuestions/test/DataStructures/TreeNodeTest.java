@@ -6,9 +6,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class TreeNodeTest{
@@ -50,13 +48,14 @@ public class TreeNodeTest{
 	@Test
 	public void testTreeNodeInsertAndTraversal(){
 		Collections.sort(arrayRandom);
-
-		root.printTree();
 		ArrayDeque<Integer> q = new ArrayDeque<Integer>();
+		int i = 0;
 		
+		//root.printTree();
 		//TreeNode.inOrderTraversal(root, TreeNode.PRINT_TASK);
 		TreeNode.inOrderTraversal(root, q);
-		int i = 0;
+		
+		
 		while(!q.isEmpty()){
 			assertEquals(arrayRandom.get(i), q.remove());
 			i++;

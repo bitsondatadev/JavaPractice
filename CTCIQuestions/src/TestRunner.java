@@ -24,6 +24,7 @@ public class TestRunner {
 	   	runTest(DataStructures.StackTest.class);
 	   	runTest(DataStructures.QueueTest.class);
 	   	runTest(DataStructures.TreeNodeTest.class);
+	   	runTest(DataStructures.TrieNodeTest.class);
 	   	
 		/*
 		 * Run Algorithms Tests

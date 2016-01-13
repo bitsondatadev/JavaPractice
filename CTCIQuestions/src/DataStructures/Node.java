@@ -2,29 +2,29 @@ package DataStructures;
 
 import java.util.List;
 
-public class Node {
-	private int id;
-	private List<Node> neighbors;
+public class Node<T extends Comparable<? super T>>{
+	private T id;
+	private List<Node<T>> neighbors;
 	
 	Node(){
-		this.setId(-1);
+		this.setId(null);
 		this.neighbors = null;
 	}
 	
-	Node(int id){
+	Node(T id){
 		this.setId(id);
 		this.neighbors = null;
 	}
 
-	public int getId() {
+	public T getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(T id) {
 		this.id = id;
 	}
 	
-	public List<Node> getNeighbors(){
+	public List<Node<T>> getNeighbors(){
 		return this.neighbors;
 	}
 	

@@ -2,14 +2,30 @@ package DataStructures;
 
 import java.util.List;
 
-/**
- * Interface used by all Tree nodes
- * @author Brian
- *
- * @param <T>
- */
-public interface Node<T>{
-	public T getData();
-	public void setData(T data);
-	List<Node<T>> getChildren();
+public class Node {
+	private int id;
+	private List<Node> neighbors;
+	
+	Node(){
+		this.setId(-1);
+		this.neighbors = null;
+	}
+	
+	Node(int id){
+		this.setId(id);
+		this.neighbors = null;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public List<Node> getNeighbors(){
+		return this.neighbors;
+	}
+	
 }

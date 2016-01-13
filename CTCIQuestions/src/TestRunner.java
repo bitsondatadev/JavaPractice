@@ -23,6 +23,7 @@ public class TestRunner {
 	   	runTest(DataStructures.HashTableTest.class);
 	   	runTest(DataStructures.StackTest.class);
 	   	runTest(DataStructures.QueueTest.class);
+	   	runTest(DataStructures.TreeNodeTest.class);
 	   	
 		/*
 		 * Run Algorithms Tests

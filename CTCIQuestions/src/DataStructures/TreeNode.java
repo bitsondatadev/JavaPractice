@@ -1,96 +1,143 @@
 package DataStructures;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Collection;
 
 /**
- * Generic Tree Node that contains the static methods for all trees to perform traversal.
+ * Binary Tree Node.
  * 
  * @author Brian
  *
  * @param <T>
  */
-public class TreeNode<T extends Object> implements Node<T>{
-
-	protected Node<T> parent = null;
-	protected List<Node<T>> children = null;
+public class TreeNode<T extends Comparable<? super T>>{
 	protected T data;
-	protected final int branchingFactor;
-	public static final int BINARY_BRANCHING_FACTOR = 2;
+	protected TreeNode<T> parent = null;
+	private TreeNode<T> left = null;    
+	private TreeNode<T> right = null; 
+	private int size = 0;
+	public static final PrintTask<?> PRINT_TASK = new PrintTask();
 	
-
 	public TreeNode(T data){
-		this.children = new ArrayList<Node<T>>();
-		this.branchingFactor = BINARY_BRANCHING_FACTOR;
 		this.setData(data);	
 	}
 	
-	public TreeNode(T data, int numChildren){
-		this.children = new ArrayList<Node<T>>();
-		this.branchingFactor = numChildren;
-		this.setData(data);	
+	public TreeNode<T> getParent(){
+		return this.parent;
 	}
 	
-	public TreeNode(Node<T> parent, T data){
-		this.parent = parent;
-		this.children = new ArrayList<Node<T>>();
-		this.branchingFactor = BINARY_BRANCHING_FACTOR;
-		this.setData(data);	
+	public void setParent(TreeNode<T> node){
+		this.parent = node;
 	}
 	
-	public TreeNode(Node<T> parent, T data, int numChildren){
-		this.parent = parent;
-		this.children = new ArrayList<Node<T>>();
-		this.branchingFactor = numChildren;
-		this.setData(data);	
+	public TreeNode<T> getLeft() {
+		return left;
 	}
 
-	public List<Node<T>> getChildren() {
-		return this.children;
+	protected void setLeft(TreeNode<T> left) {
+		this.left = left;
+		if (left != null) {
+			left.parent = this;
+		}
 	}
 
-	public boolean appendChild(Node<T> child) {
-		if(this.children.size() == this.branchingFactor ){
-			return false;
-		}
-		
-		return this.children.add(child);
+	public TreeNode<T> getRight() {
+		return right;
 	}
-	
-	public boolean removeChild(Node<T> child) {
-		if(this.children.size() == 0 ){
-			return false;
+
+	protected void setRight(TreeNode<T> right) {
+		this.right = right;
+		if (right != null) {
+			right.parent = this;
 		}
-		
-		return this.children.remove(this.children.size() - 1) != null;
 	}
 
 	public T getData() {
-		return data;
+		return this.data;
 	}
 
 	public void setData(T data) {
 		this.data = data;
 	}
 	
-	public static void inOrderTraversal(Node<Object> node, TreeTask<Object> visit){
-		if(node != null){
-			for(Node<Object> child: node.getChildren()){
-				inOrderTraversal(child, visit);
-				visit.run(child.getData());
+	public void insertInOrder(T data){
+		if(this.data == null){
+			this.left = new TreeNode<T>(data);
+		}
+		if(data.compareTo(this.data) <= 0){
+			if(this.left == null){
+				this.left = new TreeNode<T>(data);
+			}else{
+				left.insertInOrder(data);
 			}
+		}else{
+			if(this.right == null){
+				this.right = new TreeNode<T>(data);
+			}else{
+				right.insertInOrder(data);
+			}
+		}
+		this.size++;
+	}
+	
+	public TreeNode<T> find(T data) {
+		if (data.compareTo(data) == 0) {
+			return this;
+		} else if (data.compareTo(data) <= 0) {
+			return left != null ? left.find(data) : null;
+		} else if (data.compareTo(data) > 0) {
+			return right != null ? right.find(data) : null;
+		}
+		return null;
+	}
+	
+	public static <T> void inOrderTraversal(TreeNode<?> node, TreeTask<T> visit){
+		if(node != null){
+			inOrderTraversal(node.getLeft(), visit);
+			visit.run((T) node.getData());
+			inOrderTraversal(node.getRight(), visit);
+		}
+	}
+	public static <T> void preOrderTraversal(TreeNode<?> node, TreeTask<T> visit){
+		if(node != null){
+			visit.run((T) node.getData());
+			preOrderTraversal(node.getLeft(), visit);
+			preOrderTraversal(node.getRight(), visit);
+		}
+	}
+	public static <T> void postOrderTraversal(TreeNode<?> node, TreeTask<T> visit){
+		if(node != null){
+			postOrderTraversal(node.getLeft(), visit);
+			postOrderTraversal(node.getRight(), visit);
+			visit.run((T) node.getData());
 		}
 	}
 	
-	public static void inOrderTraversal(Node<Object> node){
+	public static <T> void inOrderTraversal(TreeNode<?> node, Collection<T> collection){
 		if(node != null){
-			for(Node<Object> child: node.getChildren()){
-				inOrderTraversal(child);
-				System.out.println(node.getData());
-			}
+			inOrderTraversal(node.getLeft(), collection);
+			collection.add((T) node.getData());
+			inOrderTraversal(node.getRight(), collection);
 		}
 	}
-
+	public static <T> void preOrderTraversal(TreeNode<?> node, Collection<T> collection){
+		if(node != null){
+			collection.add((T) node.getData());
+			preOrderTraversal(node.getLeft(), collection);
+			preOrderTraversal(node.getRight(), collection);
+		}
+	}
+	public static <T> void postOrderTraversal(TreeNode<?> node, Collection<T> collection){
+		if(node != null){
+			postOrderTraversal(node.getLeft(), collection);
+			postOrderTraversal(node.getRight(), collection);
+			collection.add((T) node.getData());
+		}
+	}
+	
+	
+	public void printTree() {
+		BTreePrinter.printNode(this);
+	}
 }
 
 /**
@@ -99,11 +146,12 @@ public class TreeNode<T extends Object> implements Node<T>{
  *
  * @param <T>
  */
+
 interface TreeTask<T extends Object>{
 	public void run(T data);
 }
 
-class PrintNode<T extends Object> implements TreeTask<T>{
+class PrintTask<T extends Object> implements TreeTask<T>{
 	public void run(T data) {
 		System.out.println(data);
 	}

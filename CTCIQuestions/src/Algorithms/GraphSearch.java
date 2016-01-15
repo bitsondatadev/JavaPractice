@@ -7,7 +7,7 @@ import DataStructures.Node;
 import DataStructures.Queue;
 import DataStructures.Stack;
 
-public class GraphSearch<T extends Object> {
+public class GraphSearch<T extends Comparable<? super T>> {
 	
 	/**
 	 * Returns a list in DFS Order.

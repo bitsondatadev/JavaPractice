@@ -7,6 +7,7 @@ public class LongestImagePath {
 	public static void main (String[] args){
 		LongestImagePath lip = new LongestImagePath();
 		String test = "dir1\n dir11\n  picture2.jpeg\n dir12\n  picture1.jpeg\n  dir121\n  dir123\n   picture3.jpeg\n  file1.txt\n picture5.jpeg\ndir2\n file2.gif";
+		test = "dir1\n dir11\n  dir111\n   picture1.jpeg\n dir12\n  picture2.jpeg\n";
 		System.out.println(lip.solution(test));
 	}
 	
@@ -29,8 +30,11 @@ public class LongestImagePath {
 				iter = iter.children.get(iter.children.size() - 1);
 				
 			}else if(depth < globalDepth){
-				globalDepth--;
-				iter = iter.parent;
+				int dif = globalDepth - depth;
+				for(int i = 0; i < dif; i++){
+					iter = iter.parent;
+				}
+				globalDepth = depth;
 			}
 			
 			DirNode newNode = new DirNode(dir);

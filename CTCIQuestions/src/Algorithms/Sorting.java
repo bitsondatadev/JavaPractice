@@ -21,6 +21,32 @@ public class Sorting<T extends Comparable<? super T>> {
             array.set(j + 1, val);
         }
 	}
-	
-	
+	public static <T> void quicksort(List<T> array){
+		quicksort(array, 0, array.size() - 1);
+	}
+
+	private static<T> void quicksort(List<T> array, int low, int high){
+		if(low >= high){
+	    return;
+	 	}
+		int pi = partition(array, low, high);
+		quicksort(array, low, pi - 1);
+		quicksort(array, pi + 1, high);
+	}
+
+	public static <T> int partition(List<T> array, int low, int high){
+		T p = array.get(high);
+		int i = low;
+		for(int j = low; j < high; j++){
+		    if(((Comparable<? super T>) array.get(j)).compareTo(p) <= 0){
+ 	      T temp = array.get(i);
+		  		array.set(i,array.get(j));
+				array.set(j,temp);
+				i++;
+	 	   }
+	 	}
+		array.set(high, array.get(i));
+		array.set(i,p);
+		return i;
+	}
 }

@@ -7,7 +7,7 @@ JAVAC = javac
 JAVA  = java 
 
 CODELIBS = datastructs algos
-PACKAGES = ch1 ch2 ch3 ch8
+PACKAGES = ch1 ch2 ch3 ch4 ch8
 
 all: test 
 
@@ -25,6 +25,9 @@ ch2:$(CODELIBS) src/Chapter2/*.java test/Chapter2/*.java
 
 ch3:$(CODELIBS) src/Chapter3/*.java test/Chapter3/*.java
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Chapter3/*.java $(TOPPATH)test/Chapter3/*.java
+
+ch4:$(CODELIBS) src/Chapter4/*.java test/Chapter4/*.java
+	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Chapter4/*.java $(TOPPATH)test/Chapter4/*.java
 
 ch8:$(CODELIBS) src/Chapter8/*.java test/Chapter8/*.java
 	$(JAVAC) -cp '$(CLASSPATH)bin:$(CLASSPATH)$(LIBPATH)' -d $(BINPATH) $(TOPPATH)src/Chapter8/*.java $(TOPPATH)test/Chapter8/*.java

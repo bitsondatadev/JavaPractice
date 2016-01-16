@@ -10,17 +10,25 @@ public class Sorting<T extends Comparable<? super T>> {
 	 *  - Space Complexity: O(1)
 	 * @param array
 	 */
-	public static <T> void insertionSort(List<T> array){
+	public static <T> void insertionsort(List<T> array){
 		for(int i = 1; i < array.size(); i++){
-            T val = array.get(i);
-            int j = i - 1;
-            while(j >= 0 && ((Comparable<? super T>) array.get(j)).compareTo(val) > 0){
-            	array.set(j + 1, array.get(j));
-            	j--;
-            }
-            array.set(j + 1, val);
-        }
+			T val = array.get(i);
+         int j = i - 1;
+         while(j >= 0 && ((Comparable<? super T>) array.get(j)).compareTo(val) > 0){
+         	array.set(j + 1, array.get(j));
+            j--;
+         }
+         array.set(j + 1, val);
+		}
 	}
+
+	/**
+	 * Quicksort
+	 *  - Time Complexity: O(n^2)
+	 *  - Average Time Complexity: O(nlog(n))
+	 *  - Space Complexity: O(1)
+	 * @param array
+	 */
 	public static <T> void quicksort(List<T> array){
 		quicksort(array, 0, array.size() - 1);
 	}

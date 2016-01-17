@@ -86,4 +86,28 @@ public class SortingTest{
 		assertEquals(expected, BinarySearch.binarySearch(arr, new CustomClass(10, "A", 8675309)));
 	}
 	
+	@Test
+	public void testMergesortCustomClass(){
+		int expected = 1;
+		
+		//System.out.println("Before Sort: ");
+		//System.out.println(arr);
+		
+		Sorting.mergesort(arr);
+
+		//System.out.println("After Sort: ");
+		//System.out.println(arr);
+		
+		//Notice notId doesn't have to match
+		assertEquals(expected, BinarySearch.binarySearch(arr, new CustomClass(1, "B", 122)));
+		
+		expected = 4;
+		assertEquals(expected, BinarySearch.binarySearch(arr, new CustomClass(3, "D", 123)));
+		
+		expected = 7;
+		assertEquals(expected, BinarySearch.binarySearch(arr, new CustomClass(5, "D", 99)));
+		
+		expected = 12;
+		assertEquals(expected, BinarySearch.binarySearch(arr, new CustomClass(10, "A", 8675309)));
+	}
 }

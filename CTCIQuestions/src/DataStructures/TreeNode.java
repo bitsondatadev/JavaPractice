@@ -30,9 +30,11 @@ public class TreeNode<T extends Comparable<? super T>>{
 	protected T data;
 	protected TreeNode<T> parent = null;
 	private TreeNode<T> left = null;    
-	private TreeNode<T> right = null; 
+	private TreeNode<T> right = null;
+	private boolean visited;
 	private int size = 0;
 	public static final PrintTask<?> PRINT_TASK = new PrintTask();
+	public static final ResetVisited<?> RESET_VISITED_TASK = new ResetVisited();
 	
 	public TreeNode(){
 		this.setData(null);	
@@ -80,6 +82,15 @@ public class TreeNode<T extends Comparable<? super T>>{
 		this.data = data;
 	}
 	
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
+	
 	public void insertInOrder(T data){
 		if(this.data == null){
 			this.left = new TreeNode<T>(data);
@@ -114,13 +125,13 @@ public class TreeNode<T extends Comparable<? super T>>{
 	public static <T> void inOrderTraversal(TreeNode<?> node, TreeTask<T> visit){
 		if(node != null){
 			inOrderTraversal(node.getLeft(), visit);
-			visit.run((T) node.getData());
+			visit.run(node);
 			inOrderTraversal(node.getRight(), visit);
 		}
 	}
 	public static <T> void preOrderTraversal(TreeNode<?> node, TreeTask<T> visit){
 		if(node != null){
-			visit.run((T) node.getData());
+			visit.run(node);
 			preOrderTraversal(node.getLeft(), visit);
 			preOrderTraversal(node.getRight(), visit);
 		}
@@ -129,7 +140,7 @@ public class TreeNode<T extends Comparable<? super T>>{
 		if(node != null){
 			postOrderTraversal(node.getLeft(), visit);
 			postOrderTraversal(node.getRight(), visit);
-			visit.run((T) node.getData());
+			visit.run(node);
 		}
 	}
 	
@@ -159,6 +170,10 @@ public class TreeNode<T extends Comparable<? super T>>{
 	public void printTree() {
 		BTreePrinter.printNode(this);
 	}
+	
+	public int getSize(){
+		return size;
+	}
 }
 
 /**
@@ -169,11 +184,17 @@ public class TreeNode<T extends Comparable<? super T>>{
  */
 
 interface TreeTask<T extends Object>{
-	public void run(T data);
+	public void run(TreeNode node);
 }
 
 class PrintTask<T extends Object> implements TreeTask<T>{
-	public void run(T data) {
-		System.out.println(data);
+	public void run(TreeNode node) {
+		System.out.println(node.getData());
+	}
+}
+
+class ResetVisited<T extends Object> implements TreeTask<T>{
+	public void run(TreeNode node) {
+		node.setVisited(false);
 	}
 }

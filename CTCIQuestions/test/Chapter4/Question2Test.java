@@ -6,6 +6,8 @@ import DataStructures.TreeNode;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayDeque;
+
 public class Question2Test{
 	int[] A;
 	Question2 q2;
@@ -24,11 +26,22 @@ public class Question2Test{
 		
 	}
 	
+	//Just verified the order but just
+	//printed to verify it was minimal
 	@Test
 	public void testbuildMinimalTree(){
 		TreeNode<Integer> root = q2.buildMinimalTree(A);
-		root.printTree();
-		TreeNode.inOrderTraversal(root, TreeNode.PRINT_TASK);
+		ArrayDeque<Integer> q = new ArrayDeque<Integer>();
+
+		TreeNode.inOrderTraversal(root, q);
+		
+		Integer cur = q.remove(), prev; 
+		
+		while(!q.isEmpty()){
+			prev = cur;
+			cur = q.remove();
+			assertTrue(prev <= cur);
+		}
 	}
 
 }

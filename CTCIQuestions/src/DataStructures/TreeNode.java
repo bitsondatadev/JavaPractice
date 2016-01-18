@@ -34,6 +34,10 @@ public class TreeNode<T extends Comparable<? super T>>{
 	private int size = 0;
 	public static final PrintTask<?> PRINT_TASK = new PrintTask();
 	
+	public TreeNode(){
+		this.setData(null);	
+	}
+	
 	public TreeNode(T data){
 		this.setData(data);	
 	}
@@ -50,8 +54,8 @@ public class TreeNode<T extends Comparable<? super T>>{
 		return left;
 	}
 
-	protected void setLeft(TreeNode<T> left) {
-		this.left = left;
+	public void setLeft(TreeNode<T> left) {
+		this.left  = left;
 		if (left != null) {
 			left.parent = this;
 		}
@@ -61,8 +65,8 @@ public class TreeNode<T extends Comparable<? super T>>{
 		return right;
 	}
 
-	protected void setRight(TreeNode<T> right) {
-		this.right = right;
+	public void setRight(TreeNode<T> right) {
+		this.right  = right;
 		if (right != null) {
 			right.parent = this;
 		}

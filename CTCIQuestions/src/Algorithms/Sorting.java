@@ -2,6 +2,7 @@ package Algorithms;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 public class Sorting<T extends Comparable<? super T>> {
@@ -34,7 +35,7 @@ public class Sorting<T extends Comparable<? super T>> {
 		if(array == null){
 			return;
 		}
-		List<T> helper = new ArrayList<T>(Collections.nCopies(array.size(), null));
+		List<T> helper = new ArrayList<T>((Collection<? extends T>) Collections.nCopies(array.size(), null));
 		mergesort(array, helper, 0, array.size() - 1); 
 	}
 
@@ -82,7 +83,7 @@ public class Sorting<T extends Comparable<? super T>> {
 
 	private static<T> void quicksort(List<T> array, int low, int high){
 		if(low >= high){
-	    return;
+			return;
 	 	}
 		int pi = partition(array, low, high);
 		quicksort(array, low, pi - 1);
@@ -94,7 +95,7 @@ public class Sorting<T extends Comparable<? super T>> {
 		int i = low;
 		for(int j = low; j < high; j++){
 		    if(((Comparable<? super T>) array.get(j)).compareTo(p) <= 0){
- 	      T temp = array.get(i);
+		    	T temp = array.get(i);
 		  		array.set(i,array.get(j));
 				array.set(j,temp);
 				i++;

@@ -18,9 +18,9 @@ public class TestRunner {
 		/*
 		 * Run Data Structures Tests
 		 */
-			runTest(DataStructures.LinkedListNodeTest.class);
-			runTest(DataStructures.LinkedListTest.class);
-	   	runTest(DataStructures.HashTableTest.class);
+		runTest(DataStructures.LinkedListNodeTest.class);
+		runTest(DataStructures.LinkedListTest.class);
+		runTest(DataStructures.HashTableTest.class);
 	   	runTest(DataStructures.StackTest.class);
 	   	runTest(DataStructures.QueueTest.class);
 	   	runTest(DataStructures.TreeNodeTest.class);
@@ -29,8 +29,8 @@ public class TestRunner {
 		/*
 		 * Run Algorithms Tests
 		 */
-			runTest(Algorithms.BinarySearchTest.class);
-			runTest(Algorithms.SortingTest.class);
+		runTest(Algorithms.BinarySearchTest.class);
+		runTest(Algorithms.SortingTest.class);
 	   	
 	   	/*
 		 * Run Chapter1 Tests
@@ -60,7 +60,7 @@ public class TestRunner {
 		 * Run Chapter4 Tests
 		 */
 	   	runTest(Chapter4.Question1Test.class);
-	   	//runTest(Chapter4.Question2Test.class);
+	   	runTest(Chapter4.Question2Test.class);
 	   	//runTest(Chapter4.Question3Test.class);
 	   	//runTest(Chapter4.Question4Test.class);
 

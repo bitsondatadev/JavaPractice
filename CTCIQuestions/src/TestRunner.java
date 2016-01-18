@@ -61,8 +61,7 @@ public class TestRunner {
 		 */
 	   	runTest(Chapter4.Question1Test.class);
 	   	runTest(Chapter4.Question2Test.class);
-	   	//runTest(Chapter4.Question3Test.class);
-	   	//runTest(Chapter4.Question4Test.class);
+	   	runTest(Chapter4.Question3Test.class);
 
 	   	/*
 		 * Run Chapter8 Tests
@@ -71,6 +70,11 @@ public class TestRunner {
 	   	runTest(Chapter8.Question2Test.class);
 	   	runTest(Chapter8.Question3Test.class);
 	   	runTest(Chapter8.Question4Test.class);
+	   	
+	   	/*
+		 * Run Chapter16 Tests
+		 */
+	   	runTest(Chapter16.Question1Test.class);
 	}
 
 	public static void runTest(Class<?> c){

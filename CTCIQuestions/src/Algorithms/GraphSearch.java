@@ -15,7 +15,7 @@ public class GraphSearch<T extends Comparable<? super T>> {
 	 * @return
 	 */
 	public static <T> List<Node> dfs(Node<?> s){
-		if(s == null || s.getNeighbors() == null){
+		if(s == null){
 			return null;
 		}
 		Stack<Node<?>> stack = new Stack<Node<?>>();
@@ -50,7 +50,7 @@ public class GraphSearch<T extends Comparable<? super T>> {
 	 * @return
 	 */
 	public static <T> List<Node> bfs(Node<?> s){
-		if(s == null || s.getNeighbors() == null){
+		if(s == null){
 			return null;
 		}
 		Queue<Node<?>> queue = new Queue<Node<?>>();

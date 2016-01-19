@@ -75,6 +75,8 @@ public class TestRunner {
 		 * Run Chapter16 Tests
 		 */
 	   	runTest(Chapter16.Question1Test.class);
+	   	runTest(Chapter16.Question2Test.class);
+	   	runTest(Chapter16.Question3Test.class);
 	}
 
 	public static void runTest(Class<?> c){

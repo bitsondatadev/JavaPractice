@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-init-method="init" default-destroy-method="destroy"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="person" class="us.brianolsen.spring.model.Person" scope="singleton"
+		init-method="onCreate" destroy-method="onDestroy" factory-method="getInstance">
+		<constructor-arg value="777" name="id" type="int"></constructor-arg>
+		<constructor-arg value="Mary" name="name" type="String"></constructor-arg>
+		<property name="taxId" value="123"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="personPrototype" class="us.brianolsen.spring.model.Person"
+		scope="prototype" init-method="onCreate" destroy-method="onDestroy"
+		factory-method="createPerson" factory-bean="personfactory">
+		<constructor-arg value="654" name="id" type="int"></constructor-arg>
+		<constructor-arg value="Mike" name="name" type="String"></constructor-arg>
+		<property name="taxId" value="123"></property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="address" class="us.brianolsen.spring.model.Address">
+		<constructor-arg name="street" type="String" value='"1 Church Lane"'>
+		</constructor-arg>
+		<constructor-arg name="postcode" type="int" value="98764"></constructor-arg>
+	</bean>
+
+	<!-- Setting values in p namespace notice: xmlns:p="http://www.springframework.org/schema/p" 
+		above -->
+	<bean id="address2" class="us.brianolsen.spring.model.Address"
+		p:street="23 Vineyard Ln." p:postcode="6789">
+	</bean>
+
+	<bean id="personfactory" class="us.brianolsen.spring.factory.PersonFactory">
+	</bean>
+
+	<bean id="basket" class="us.brianolsen.spring.model.FruitBasket">
+		<constructor-arg value="Brian's Basket"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>"banana"</value>
+				<value>"apple"</value>
+				<value>"orange"</value>
+				<value>"orange"</value>
+				<value>"grapes"</value>
+				<value>"kiwi"</value>
+			</list>
+			<!-- Two orange values won't show if you use a map as below -->
+			<!-- <map> -->
+			<!-- <value>"banana"</value> -->
+			<!-- <value>"apple"</value> -->
+			<!-- <value>"orange"</value> -->
+			<!-- <value>"orange"</value> -->
+			<!-- <value>"grapes"</value> -->
+			<!-- <value>"kiwi"</value> -->
+			<!-- </map> -->
+
+		</constructor-arg>
+	</bean>
+	<bean id="jungle" class="us.brianolsen.spring.model.Jungle">
+		<property name="largest">
+			<bean class="us.brianolsen.spring.model.Animal">
+				<property name="name" value="Richard"></property>
+				<property name="type" value="elephant"></property>
+			</bean>
+		</property>
+		<!-- Currently "largest" is being defined as an inner bean that copies 
+			the elephant bean. If we want to refer to it as a reference to the elephant 
+			bean we should use what's below. <property name="largest" ref="elephant"></property> -->
+		<property name="animals">
+			<list>
+				<ref bean="lion" />
+				<ref bean="snake" />
+				<ref bean="elephant" />
+			</list>
+		</property>
+		<property name="foods">
+			<props>
+				<prop key="gorrila">banana</prop>
+				<prop key="panda">bamboo</prop>
+				<prop key="snake">human</prop>
+			</props>
+		</property>
+		<property name="animalMap">
+			<map>
+				<entry key="lion" value-ref="lion"></entry>
+				<entry key="elephant" value-ref="elephant"></entry>
+				<entry key="snake" value-ref="snake"></entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="lion" class="us.brianolsen.spring.model.Animal">
+
+		<property name="name" value="Igor"></property>
+		<property name="type" value="lion"></property>
+	</bean>
+	<bean id="elephant" class="us.brianolsen.spring.model.Animal">
+		<property name="name" value="Richard"></property>
+		<property name="type" value="elephant"></property>
+	</bean>
+	<bean id="snake" class="us.brianolsen.spring.model.Animal">
+		<property name="name" value="Bob"></property>
+		<property name="type" value="snake"></property>
+	</bean>
+</beans>

@@ -1,5 +1,7 @@
-# InterviewPractice
-Practice for my interviews from the Cracking the coding interview book. I've set up a test bed using JUnit. It will run in both linux terminal and is used in an Eclipse program.
+# JavaPractice
+Practice projects for my courses I'm taking as well as interviews from the Cracking the coding interview book. 
+
+For Cracking the coding interview, I've set up a test bed using JUnit. It will run in both linux terminal and is used in an Eclipse program.
 Here is how I have structured the packages:
 ![test](https://github.com/brianolsen87/InterviewPractice/blob/master/images/tree.png "Package Tree")
 

@@ -5,15 +5,20 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
-	<bean id="logger" class="us.brianolsen.spring.model.Logger">
-
+	<bean id="logWriter1" class="us.brianolsen.spring.model.ConsoleWriter">
+		<qualifier value="chooseMe"></qualifier>
 	</bean>
 
-	<bean id="consoleWriter" class="us.brianolsen.spring.model.ConsoleWriter">
+	<bean id="logWriter2" class="us.brianolsen.spring.model.ConsoleWriter">
 	</bean>
-
-	<bean id="fileWriter" class="us.brianolsen.spring.model.FileWriter">
-	</bean>
-
+	<!-- These aren't needed because we define them in classes using @Component 
+		annotation 
+		
+		<bean id="logWriter3" class="us.brianolsen.spring.model.FileWriter"> 
+		</bean> 
+		<bean id="logger" class="us.brianolsen.spring.model.Logger"> 
+		</bean> 
+	-->
 	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="us.brianolsen.spring.model"></context:component-scan>
 </beans>

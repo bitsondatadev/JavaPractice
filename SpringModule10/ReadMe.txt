@@ -1,4 +1,4 @@
-#Spring Module 7 - Web Application Basics with Spring MVC
+#Spring Module 10 - Spring Security and Managing Users
 
 Notes on set up...
 #################################################################

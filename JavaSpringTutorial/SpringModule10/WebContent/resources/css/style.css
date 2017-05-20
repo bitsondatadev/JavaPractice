@@ -1,0 +1,44 @@
+.control{
+	margin-left: 10px;
+}
+
+.error{
+	font-size: small;
+	color: red;
+	margin-left: 10px;
+}
+.valid{
+	font-size: small;
+	color: green;
+	margin-left: 10px;
+}
+
+.formTable{
+	width: 600px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+.label{
+	text-align:right;
+	vertical-align:top;
+}
+
+table.offers{
+	padding: 10px;
+	border: 1px solid grey;
+}
+
+input[type=text]{
+	width: 250px;
+}
+input[type=password]{
+	width: 250px;
+}
+textarea{
+	width: 250px;
+	height: 300px;
+}
+
+p.error {
+	font-size: medium
+}

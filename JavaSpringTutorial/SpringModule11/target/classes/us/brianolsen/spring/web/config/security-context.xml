@@ -21,9 +21,9 @@
 	    <security:intercept-url pattern="/admin" access="hasRole('ADMIN')" />
 	    <!-- This was used to show method level security but obove is preferred 
 	    security:intercept-url pattern="/admin" access="permitAll" /-->
-	    <security:intercept-url pattern="/createOffer" access="isAuthenticated()" />
+	    <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/doCreate" access="isAuthenticated()" />
-	    <security:intercept-url pattern="/offerCreated" access="isAuthenticated()" />
+	    <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/" access="permitAll" />
 	    <security:intercept-url pattern="/denied" access="permitAll" />
 	    <security:intercept-url pattern="/loggedout" access="permitAll" />

@@ -10,18 +10,18 @@ public class App {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("us/brianolsen/spring/aop/beans.xml");
-		_testBasicAOP(context);
-
-		try {
-		_testVariousTypesOfAdvice(context);
-		} catch (Exception e) {
-			System.out.println("Encountered error: " + e.getMessage());
-		}
-		_testWildCardPointcuts(context);
+//		_testBasicAOP(context);
+//
+//		try {
+//		_testVariousTypesOfAdvice(context);
+//		} catch (Exception e) {
+//			System.out.println("Encountered error: " + e.getMessage());
+//		}
+//		_testWildCardPointcuts(context);
 		_testProxiesAndInterfaces(context);
-		_testVariousPointcutDesignators(context);
-		_testCominingPointcuts(context);
-		_testIntroductions(context);
+//		_testVariousPointcutDesignators(context);
+//		_testCominingPointcuts(context);
+//		_testIntroductions(context);
 
 		context.close();
 

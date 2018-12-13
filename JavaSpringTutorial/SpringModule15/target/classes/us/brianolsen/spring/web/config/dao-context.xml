@@ -1,25 +1,24 @@
-#Spring Module 14 - Hibernate
-
-#################################################################
-Setting up Hibernate
-#################################################################
-Add these dependencies
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>4.3.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>4.3.3.Final</version>
-		</dependency>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 
-Update sessionFactory in dao-context.xml and datasource.xml to look like the following
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="us.brianolsen.spring.web.dao">
+	</context:component-scan>
 
-<bean id="sessionFactory"
+	<beans profile="production">
+
+		<jee:jndi-lookup jndi-name="jdbc/springJdniDBConnection"
+			id="dataSource" expected-type="javax.sql.DataSource">
+		</jee:jndi-lookup>
+
+		<bean id="sessionFactory"
 			class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
 			<property name="dataSource" ref="dataSource"></property>
@@ -41,8 +40,6 @@ Update sessionFactory in dao-context.xml and datasource.xml to look like the fol
 			</property>
 		</bean>
 
-add a transaction manager
-
 		<bean id="transactionManager"
 			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			<property name="dataSource" ref="dataSource"></property>
@@ -50,13 +47,10 @@ add a transaction manager
 		<tx:annotation-driven />
 
 
-add an exception tranlator and add javax annotations @Repository and @Transactional above the dao classes.
-
 		<!-- acesses any dao marked as @Repository and translates internal query 
 			exceptions to DataAccessExceptions -->
 		<bean id="exceptionTranslator"
 			class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
 		</bean>
-		
-Above the model classes add javax annotations
-@Entity and @Table(name = "<name-of-db-table-entity-maps-to>") 
+	</beans>
+</beans>

@@ -40,4 +40,8 @@ public class UsersService {
 	public User getUser(String username) {
 		return usersDao.getUser(username);
 	}
+
+	public List<Message> getMessages(String username) {
+		return messagesDao.getMessages(username);
+	}
 }

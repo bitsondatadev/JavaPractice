@@ -23,8 +23,11 @@
 	    security:intercept-url pattern="/admin" access="permitAll" /-->
 	    <security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/doCreate" access="isAuthenticated()" />
+	    <security:intercept-url pattern="/messages" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/offercreated" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/offerdeleted" access="isAuthenticated()" />
+	    <security:intercept-url pattern="/getmessages" access="isAuthenticated()" />
+	    <security:intercept-url pattern="/sendmessage" access="isAuthenticated()" />
 	    <security:intercept-url pattern="/" access="permitAll" />
 	    <security:intercept-url pattern="/message" access="permitAll" />
 	    <security:intercept-url pattern="/denied" access="permitAll" />
@@ -34,7 +37,6 @@
 	    <security:intercept-url pattern="/accountcreated" access="permitAll" />
 	    <security:intercept-url pattern="/static/**" access="permitAll" />
 	    <security:intercept-url pattern="/login" access="permitAll" />
-	    <security:intercept-url pattern="/offers" access="permitAll" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />

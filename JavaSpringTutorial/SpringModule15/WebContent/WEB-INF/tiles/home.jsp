@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-
+	
 <table class="offers">
 	<tr>
 		<td>Name</td>
@@ -25,21 +25,27 @@
 </table>
 <br/>
 
-<c:choose>
-	<c:when test="${hasOffer}">
-		<p>
-			<a href="${pageContext.request.contextPath}/createoffer">Edit or delete your current Offer</a>
-		</p>
-	</c:when>
-	<c:otherwise>
-	<p>
-		<a href="${pageContext.request.contextPath}/createoffer">Add a new offer.</a>
-	</p>
-	</c:otherwise>
-</c:choose>
 
-<sec:authorize access="hasRole('ADMIN')">
-	<p>
-		<a href="${pageContext.request.contextPath}/admin">Admin</a>
-	</p>
-</sec:authorize>
+
+<script type = "text/javascript">
+	<!-- 
+	-->
+	
+	function updateMessageLink(data){
+		$("#numberMessages").text(data.number);
+		//alert(data.number);
+	}
+	
+	function onLoad(){
+		updatePage();
+		window.setInterval(updatePage, 5000);
+	}
+	
+	function updatePage(){
+		$.getJSON("<c:url value='/getmessages'/>", updateMessageLink);
+	}
+	
+	$(document).ready(onLoad);
+	
+	
+</script>

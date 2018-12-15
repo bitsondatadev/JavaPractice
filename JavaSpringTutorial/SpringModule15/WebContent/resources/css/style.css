@@ -76,3 +76,51 @@ div.footer{
 	font-size: small;
 	color: grey;
 }
+
+.message{
+	margin-bottom:20px;
+	border-bottom: 1px dashed brown
+}
+
+span.subject{
+	font-size: large;
+	font-weight: bold;
+	color: brown;
+}
+
+span.messageBody{
+	display:block;
+	font-style: italic;
+}
+
+span.name{
+	font-size: medium;
+	color: brown;
+	
+}
+
+form.replyForm{
+	padding:20px;
+	display:none;
+}
+
+textArea.replyArea{
+	width:400px;
+	height: 250px;
+}
+
+input.replyButton{
+	display: block;
+	font-size:large;
+	border: 1px solid gray
+}
+
+a.replyLink:link{
+	color:brown;
+}
+
+span.alert{
+	display: block;
+	font-weight: bold;
+	color: green;
+}

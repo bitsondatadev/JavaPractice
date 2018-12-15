@@ -58,8 +58,7 @@
 	</bean>
 
 	<webflow-config:flow-builder-services
-		id="flowBuilderService" view-factory-creator="mvcViewFactoryCreator"
-		validator="validator" />
+		id="flowBuilderService" view-factory-creator="mvcViewFactoryCreator" validator="validator" />
 
 	<bean id="mvcViewFactoryCreator"
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">

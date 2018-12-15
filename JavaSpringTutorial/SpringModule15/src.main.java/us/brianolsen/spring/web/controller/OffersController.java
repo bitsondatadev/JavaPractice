@@ -1,7 +1,6 @@
 package us.brianolsen.spring.web.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,16 +29,6 @@ public class OffersController {
 	public String showTest(Model model, @RequestParam("id") String id) {
 		System.out.println("id is: " + id);
 		return "home";
-	}
-
-	@RequestMapping("/offers")
-	public String showOffers(Model model) {
-
-		List<Offer> offers = offersService.getOffers();
-
-		model.addAttribute("offers", offers);
-
-		return "offers";
 	}
 
 	@RequestMapping("/createoffer")
